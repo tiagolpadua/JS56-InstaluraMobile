@@ -19,17 +19,13 @@ export default class Feed extends Component {
       { id: 3, usuario: 'vitor' }
     ];
     return (
-      <FlatList style={{ marginTop: 20 }}
-        keyExtractor={item => item.id + ''}
-        data={fotos}
-        renderItem={({ item }) =>
           <View>
-            <Text>{item.usuario}</Text>
-            <Image source={require('../../resources/img/alura.png')}
-              style={{ width: width, height: width }} />
+            {fotos.map(foto =>
+              <Text>{foto.usuario}</Text>
+              <Image source={require('../../resources/img/alura.png')}
+                style={{width: width, height: width}} />
+            )}
           </View>
-        }
-      />
     );
   }
 }
