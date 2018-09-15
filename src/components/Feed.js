@@ -23,7 +23,7 @@ export default class Feed extends Component {
         {fotos.map(foto =>
           <View key={foto.id}>
             <Text>{foto.usuario}</Text>
-            <Image source={require('./alura.png')}
+            <Image source={require('../../resources/alura.png')}
               style={{ width: width, height: width }} />
           </View>
         )}
