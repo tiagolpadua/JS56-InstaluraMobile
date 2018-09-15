@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, FlatList, Dimensions, Image } from 'react-native';
+import { Text, View, FlatList, Dimensions, Image, StyleSheet } from 'react-native';
 
 const width = Dimensions.get('screen').width;
 
@@ -19,21 +19,41 @@ export default class Feed extends Component {
       { id: 3, usuario: 'vitor' }
     ];
     return (
-      <FlatList style={{ marginTop: 20 }}
+      <FlatList style={styles.container}
         keyExtractor={item => item.id + ''}
         data={fotos}
         renderItem={({ item }) =>
           <View>
-            <View style={{ margin: 10, flexDirection: 'row', alignItems: 'center' }}>
+            <View style={styles.cabecalho}>
               <Image source={require('../../resources/img/alura.png')}
-                style={{ marginRight: 10, borderRadius: 20, width: 40, height: 40 }} />
+                style={styles.fotoDePerfil} />
               <Text>{item.usuario}</Text>
             </View>
             <Image source={require('../../resources/img/alura.png')}
-              style={{ width: width, height: width }} />
+              style={styles.foto} />
           </View>
         }
       />
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 20,
+  },
+  cabecalho: {
+    margin: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  fotoDePerfil: {
+    marginRight: 10,
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+  },
+  foto: {
+    width: width,
+    height: width,
+  },
+});
