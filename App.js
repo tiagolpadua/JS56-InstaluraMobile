@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image } from 'react-native';
+import { Text, View, ScrollView, Dimensions, Image } from 'react-native';
 
 const width = Dimensions.get('screen').width;
 
@@ -19,7 +19,7 @@ export default class Feed extends Component {
       { id: 3, usuario: 'vitor' }
     ];
     return (
-      <View>
+      <ScrollView>
         {fotos.map(foto =>
           <View key={foto.id}>
             <Text>{foto.usuario}</Text>
@@ -27,7 +27,7 @@ export default class Feed extends Component {
               style={{ width: width, height: width }} />
           </View>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }
