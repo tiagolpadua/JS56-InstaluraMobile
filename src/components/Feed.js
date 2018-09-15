@@ -24,9 +24,9 @@ export default class Feed extends Component {
         data={fotos}
         renderItem={({ item }) =>
           <View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ margin: 10, flexDirection: 'row', alignItems: 'center' }}>
               <Image source={require('../../resources/img/alura.png')}
-                style={{ width: 40, height: 40 }} />
+                style={{ marginRight: 10, borderRadius: 20, width: 40, height: 40 }} />
               <Text>{item.usuario}</Text>
             </View>
             <Image source={require('../../resources/img/alura.png')}
