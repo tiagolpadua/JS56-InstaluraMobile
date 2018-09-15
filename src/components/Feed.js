@@ -3,16 +3,17 @@ import { FlatList, StyleSheet } from 'react-native';
 import Post from './Post';
 
 export default class Feed extends Component {
+  constructor() {
+    super();
+    this.state = {
+      fotos: []
+    }
+  }
   render() {
-    const fotos = [
-      { id: 1, usuario: 'rafael' },
-      { id: 2, usuario: 'alberto' },
-      { id: 3, usuario: 'vitor' }
-    ];
     return (
       <FlatList style={styles.container}
-        keyExtractor={item => item.id + ''}
-        data={fotos}
+        keyExtractor={item => item.id}
+        data={this.state.fotos}
         renderItem={({ item }) =>
           <Post foto={item} />
         }
