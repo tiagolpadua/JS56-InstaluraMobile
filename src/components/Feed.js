@@ -24,7 +24,11 @@ export default class Feed extends Component {
         data={fotos}
         renderItem={({ item }) =>
           <View>
-            <Text>{item.usuario}</Text>
+            <View>
+              <Image source={require('../../resources/img/alura.png')}
+                style={{ width: 40, height: 40 }} />
+              <Text>{item.usuario}</Text>
+            </View>
             <Image source={require('../../resources/img/alura.png')}
               style={{ width: width, height: width }} />
           </View>
