@@ -14,7 +14,7 @@ export default class Feed extends Component {
         keyExtractor={item => item.id + ''}
         data={fotos}
         renderItem={({ item }) =>
-          <Post />
+          <Post foto={item} />
         }
       />
     );

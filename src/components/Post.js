@@ -10,7 +10,7 @@ export default class Post extends Component {
                 <View style={styles.cabecalho}>
                     <Image source={require('../../resources/img/alura.png')}
                         style={styles.fotoDePerfil} />
-                    <Text>{item.usuario}</Text>
+                    <Text>{this.props.foto.usuario}</Text>
                 </View>
                 <Image source={require('../../resources/img/alura.png')}
                     style={styles.foto} />
