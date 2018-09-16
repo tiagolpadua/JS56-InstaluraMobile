@@ -24,6 +24,16 @@ export default class Post extends Component {
         this.setState({ foto: fotoAtualizada });
     }
 
+    exibeLikes(likers) {
+        if (likers.length <= 0)
+            return;
+        return (
+            <Text style={styles.likes}>
+                {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
+            </Text>
+        );
+    }
+
     render() {
         const { foto } = this.state;
         return (
@@ -41,12 +51,7 @@ export default class Post extends Component {
                             source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
-                {foto.likers.length > 0 ?
-                    <Text style={styles.likes}>
-                        {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
-                    </Text> :
-                    null
-                }
+                {this.exibeLikes(foto.likers)}
             </View>
         );
     }
