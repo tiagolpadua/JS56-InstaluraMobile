@@ -67,6 +67,11 @@ export default class Post extends Component {
         );
     }
 
+    adicionaComentario = () => {
+        console.warn(this.state.valorComentario); // pegamos o texto do state
+        this.inputComentario.clear();
+    }
+
     render() {
         const { foto } = this.state;
         return (
@@ -93,8 +98,10 @@ export default class Post extends Component {
                 )}
                 <View style={styles.novoComentario}>
                     <TextInput style={styles.input}
-                        placeholder="Adicione um comentário..." />
-                    <TouchableOpacity onPress={this.adicionaComentario}>
+                        placeholder="Adicione um comentário..."
+                        ref={input => this.inputComentario = input}
+                        onChangeText={texto => this.setState({ valorComentario: texto })} />
+                    <TouchableOpacity onPress={this.adicionaComentario} >
                         <Image style={styles.icone}
                             source={require('../../resources/img/send.png')} />
                     </TouchableOpacity>
