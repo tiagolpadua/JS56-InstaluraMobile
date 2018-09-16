@@ -18,11 +18,52 @@ export default class Post extends Component {
     }
 
     like = () => {
+        const { foto } = this.state;
+        let novaLista = [];
+        if (!foto.likeada) {
+            novaLista = [
+                ...foto.likers,
+                { login: 'meuUsuario' }
+            ];
+        } else {
+            novaLista = foto.likers.filter(liker => {
+                return liker.login !== 'meuUsuario'
+            });
+        }
         const fotoAtualizada = {
-            ...this.state.foto,
-            likeada: !this.state.foto.likeada
+            ...foto,
+            likeada: !foto.likeada,
+            likers: novaLista
         }
         this.setState({ foto: fotoAtualizada });
+    }
+
+    exibeLikes(foto) {
+        if (foto.likers.length <= 0)
+            return;
+        return (
+            <Text style={styles.likes}>
+                {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
+            </Text>
+        );
+    }
+
+    exibeLikes_exopc(foto) {
+        return foto.likers.length > 0 &&
+            <Text style={styles.likes}>
+                {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
+            </Text>
+    }
+
+    exibeLegenda(foto) {
+        if (foto.comentario === '')
+            return;
+        return (
+            <View style={styles.comentario}>
+                <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
+                <Text>{foto.comentario}</Text>
+            </View>
+        );
     }
 
     render() {
@@ -41,6 +82,8 @@ export default class Post extends Component {
                         <Image style={styles.botaoDeLike} source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
+                {this.exibeLikes(foto)}
+                {this.exibeLegenda(foto)}
             </View>
         );
     }
@@ -68,5 +111,15 @@ const styles = StyleSheet.create({
     botaoDeLike: {
         height: 40,
         width: 40,
+    },
+    likes: {
+        fontWeight: 'bold'
+    },
+    comentario: {
+        flexDirection: 'row',
+    },
+    tituloComentario: {
+        fontWeight: 'bold',
+        marginRight: 5,
     },
 });
