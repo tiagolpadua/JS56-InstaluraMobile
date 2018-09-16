@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 const width = Dimensions.get('screen').width;
 
@@ -24,8 +24,9 @@ export default class Post extends Component {
                     style={styles.foto} />
 
                 <View style={styles.rodape}>
-                    <Image style={styles.botaoDeLike}
-                        source={require('../../resources/img/s2.png')} />
+                    <TouchableOpacity onPress={() => console.warn('Touchable Opacity respondendo!')}>
+                        <Image style={styles.botaoDeLike} source={require('../../resources/img/s2.png')} />
+                    </TouchableOpacity>
                 </View>
             </View>
         );
