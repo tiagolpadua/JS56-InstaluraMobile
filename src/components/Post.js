@@ -34,6 +34,17 @@ export default class Post extends Component {
         );
     }
 
+    exibeLegenda(foto) {
+        if (foto.comentario === '')
+            return;
+        return (
+            <View style={styles.comentario}>
+                <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
+                <Text>{foto.comentario}</Text>
+            </View>
+        );
+    }
+
     render() {
         const { foto } = this.state;
         return (
@@ -52,10 +63,7 @@ export default class Post extends Component {
                     </TouchableOpacity>
                 </View>
                 {this.exibeLikes(foto.likers)}
-                <View style={styles.comentario}>
-                    <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
-                    <Text>{foto.comentario}</Text>
-                </View>
+                {this.exibeLegenda(foto)}
             </View>
         );
     }
