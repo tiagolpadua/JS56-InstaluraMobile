@@ -19,14 +19,14 @@ export default class Likes extends Component {
     }
 
     render() {
-        const { likeCallback } = this.props;
+        const { foto, likeCallback } = this.props;
 
         return (
             <View>
                 <TouchableOpacity onPress={likeCallback}>
                     <Image style={styles.botaoDeLike}
                         source={this.carregaIcone(foto.likeada)} />
-                </TouchableOpacity>{this.exibeLikes(foto.likers)}
+                </TouchableOpacity>{this.exibeLikes(foto)}
             </View>
         );
     }

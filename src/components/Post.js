@@ -74,7 +74,7 @@ export default class Post extends Component {
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
                 <View style={styles.rodape}>
-                    <Likes likeCallback={this.like}/>
+                    <Likes foto={foto} likeCallback={this.like}/>
                     {this.exibeLegenda(foto)}
                     {foto.comentarios.map(comentario =>
                         <View style={styles.comentario} key={comentario.id}>
