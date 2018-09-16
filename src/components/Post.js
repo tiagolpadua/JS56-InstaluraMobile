@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import Likes from './Likes';
 import InputComentario from './InputComentario';
 
 const width = Dimensions.get('screen').width;
@@ -13,25 +14,20 @@ export default class Post extends Component {
         }
     }
 
-    carregaIcone(likeada) {
-        return likeada ? require('../../resources/img/s2-checked.png') :
-            require('../../resources/img/s2.png')
-    }
-
-    adicionaComentario = (valorComentario, inputComentario) => {
-        if (valorComentario === '')
+    adicionaComentario = () => {
+        if (this.state.valorComentario === '')
             return;
         const novaLista = [...this.state.foto.comentarios, {
-            id: valorComentario,
+            id: this.state.valorComentario,
             login: 'meuUsuario',
-            texto: valorComentario,
+            texto: this.state.valorComentario,
         }];
         const fotoAtualizada = {
             ...this.state.foto,
             comentarios: novaLista,
         }
-        this.setState({ foto: fotoAtualizada });
-        inputComentario.clear();
+        this.setState({ foto: fotoAtualizada, valorComentario: '' });
+        this.inputComentario.clear();
     }
 
     like = () => {
@@ -53,23 +49,6 @@ export default class Post extends Component {
             likers: novaLista
         }
         this.setState({ foto: fotoAtualizada });
-    }
-
-    exibeLikes(foto) {
-        if (foto.likers.length <= 0)
-            return;
-        return (
-            <Text style={styles.likes}>
-                {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
-            </Text>
-        );
-    }
-
-    exibeLikes_exopc(foto) {
-        return foto.likers.length > 0 &&
-            <Text style={styles.likes}>
-                {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
-            </Text>
     }
 
     exibeLegenda(foto) {
@@ -95,18 +74,17 @@ export default class Post extends Component {
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
                 <View style={styles.rodape}>
-                    <TouchableOpacity onPress={this.like}>
-                        <Image style={styles.botaoDeLike} source={this.carregaIcone(foto.likeada)} />
-                    </TouchableOpacity>
+                    <Likes likeCallback={this.like}/>
+                    {this.exibeLegenda(foto)}
+                    {foto.comentarios.map(comentario =>
+                        <View style={styles.comentario} key={comentario.id}>
+                            <Text style={styles.tituloComentario}>{comentario.login}</Text>
+                            <Text>{comentario.texto}</Text>
+                        </View>
+                    )}
+                    <InputComentario
+                        comentarioCallback={this.adicionaComentario} />
                 </View>
-                {this.exibeLikes(foto)}
-                {this.exibeLegenda(foto)}
-                {foto.comentarios.map(comentario =>
-                    <View style={styles.comentario} key={comentario.id}>
-                        <Text style={styles.tituloComentario}>{comentario.login}</Text>
-                        <Text>{comentario.texto}</Text>
-                    </View>)}
-                <InputComentario comentarioCallback={this.adicionaComentario} />
             </View>
         );
     }
@@ -144,19 +122,5 @@ const styles = StyleSheet.create({
     tituloComentario: {
         fontWeight: 'bold',
         marginRight: 5,
-    },
-    novoComentario: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-    },
-    input: {
-        flex: 1,
-        height: 40,
-    },
-    icone: {
-        height: 30,
-        width: 30,
-    },
+    }
 });
