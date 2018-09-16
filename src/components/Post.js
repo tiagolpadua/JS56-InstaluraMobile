@@ -11,6 +11,19 @@ export default class Post extends Component {
         }
     }
 
+    carregaIcone(likeada) {
+        return likeada ? require('../../resources/img/s2-checked.png') :
+            require('../../resources/img/s2.png')
+    }
+
+    like = () => {
+        const fotoAtualizada = {
+            ...this.state.foto,
+            likeada: !this.state.foto.likeada
+        }
+        this.setState({ foto: fotoAtualizada });
+    }
+
     render() {
         const { foto } = this.state;
         return (
@@ -22,12 +35,10 @@ export default class Post extends Component {
                 </View>
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
-
                 <View style={styles.rodape}>
-                    <TouchableOpacity onPress={() => console.warn('Touchable Opacity respondendo!')}>
+                    <TouchableOpacity onPress={this.like}>
                         <Image style={styles.botaoDeLike}
-                            source={foto.likeada ? require('../../resources/img/s2-checked.png') :
-                                require('../../resources/img/s2.png')} />
+                            source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
             </View>
