@@ -41,6 +41,7 @@ export default class Post extends Component {
                             source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
+                <Text style={styles.likes}>2 curtidas</Text>
             </View>
         );
     }
@@ -69,4 +70,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 40,
     },
+    likes: {
+        fontWeight: 'bold'
+    }
 });
