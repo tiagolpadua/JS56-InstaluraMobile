@@ -7,6 +7,7 @@ export default class Post extends Component {
 
     constructor(props) {
         super(props);
+        this.props.foto.comentarios = [{id: '78787',texto: 'um comentário', login: 'um usuário'}];
         this.state = {
             foto: this.props.foto
         }
@@ -85,8 +86,8 @@ export default class Post extends Component {
                 {this.exibeLikes(foto)}
                 {this.exibeLegenda(foto)}
                 {foto.comentarios.map(comentario =>
-                    <View key={comentario.id}>
-                        <Text>{comentario.login}</Text>
+                    <View style={styles.comentario} key={comentario.id}>
+                        <Text style={styles.tituloComentario}>{comentario.login}</Text>
                         <Text>{comentario.texto}</Text>
                     </View>
                 )}
