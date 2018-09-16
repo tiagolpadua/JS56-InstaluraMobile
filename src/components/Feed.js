@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, Platform} from 'react-native';
 import Post from './Post';
 
 export default class Feed extends Component {
@@ -30,6 +30,6 @@ export default class Feed extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: Platform.OS == 'ios' ? 20 : 0
   }
 });

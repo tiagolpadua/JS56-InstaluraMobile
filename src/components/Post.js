@@ -107,6 +107,7 @@ export default class Post extends Component {
                     </View>)}
                 <View style={styles.novoComentario}>
                     <TextInput style={styles.input}
+                        underlineColorAndroid="transparent"
                         placeholder="Adicione um comentário..."
                         ref={input => this.inputComentario = input}
                         onChangeText={texto => this.setState({ valorComentario: texto })} />
