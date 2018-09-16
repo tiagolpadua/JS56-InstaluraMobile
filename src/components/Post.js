@@ -52,6 +52,10 @@ export default class Post extends Component {
                     </TouchableOpacity>
                 </View>
                 {this.exibeLikes(foto.likers)}
+                <View style={styles.comentario}>
+                    <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
+                    <Text>{foto.comentario}</Text>
+                </View>
             </View>
         );
     }
@@ -82,5 +86,12 @@ const styles = StyleSheet.create({
     },
     likes: {
         fontWeight: 'bold'
-    }
+    },
+    comentario: {
+        flexDirection: 'row',
+    },
+    tituloComentario: {
+        fontWeight: 'bold',
+        marginRight: 5,
+    },
 });
