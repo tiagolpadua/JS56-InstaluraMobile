@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, TextInput, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import InputComentario from './InputComentario';
 
 const width = Dimensions.get('screen').width;
