@@ -93,8 +93,11 @@ export default class Post extends Component {
                 )}
                 <View style={styles.novoComentario}>
                     <TextInput style={styles.input}
-                        placeholder="Adicione um comentário..." /><Image style={styles.icone}
+                        placeholder="Adicione um comentário..." />
+                    <TouchableOpacity onPress={this.adicionaComentario}>
+                        <Image style={styles.icone}
                             source={require('../../resources/img/send.png')} />
+                    </TouchableOpacity>
                 </View>
             </View>
         );
