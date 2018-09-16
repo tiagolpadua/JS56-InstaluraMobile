@@ -18,21 +18,20 @@ export default class Post extends Component {
             require('../../resources/img/s2.png')
     }
 
-    adicionaComentario = () => {
-        console.warn('adicionaComentario');
+    adicionaComentario = (valorComentario, inputComentario) => {
         if (valorComentario === '')
             return;
-        const novaLista = [...foto.comentarios, {
+        const novaLista = [...this.state.foto.comentarios, {
             id: valorComentario,
             login: 'meuUsuario',
             texto: valorComentario,
         }];
         const fotoAtualizada = {
-            ...foto,
+            ...this.state.foto,
             comentarios: novaLista,
         }
-        this.setState({ foto: fotoAtualizada, valorComentario: '' });
-        this.inputComentario.clear();
+        this.setState({ foto: fotoAtualizada });
+        inputComentario.clear();
     }
 
     like = () => {

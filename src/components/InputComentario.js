@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import {
-    StyleSheet, View,
-    Image,
-    TouchableOpacity,
-    TextInput,
-} from 'react-native';
 export default class InputComentario extends Component {
+    constructor() {
+        super();
+        this.state = {
+            valorComentario: '',
+        }
+    }
     render() {
         return (
             <View style={styles.novoComentario}>
@@ -14,7 +13,9 @@ export default class InputComentario extends Component {
                     ref={input => this.inputComentario = input}
                     onChangeText={texto => this.setState({ valorComentario: texto })}
                     underlineColorAndroid="transparent" />
-                <TouchableOpacity onPress={this.props.comentarioCallback}>
+                <TouchableOpacity onPress={
+                    this.props.comentarioCallback(this.state.valorComentario, this.inputComentario)
+                }>
                     <Image style={styles.icone}
                         source={require("../../resources/img/send.png")} />
                 </TouchableOpacity>
@@ -22,19 +23,3 @@ export default class InputComentario extends Component {
         );
     }
 }
-const styles = StyleSheet.create({
-    novoComentario: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
-    },
-    input: {
-        flex: 1,
-        height: 40,
-    },
-    icone: {
-        width: 30,
-        height: 30,
-    }
-});
