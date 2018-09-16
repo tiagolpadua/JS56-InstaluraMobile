@@ -29,8 +29,8 @@ export default class Post extends Component {
         this.setState({ foto: fotoAtualizada });
     }
 
-    exibeLikes(likers) {
-        if (likers.length <= 0)
+    exibeLikes(foto) {
+        if (foto.likers.length <= 0)
             return;
         return (
             <Text style={styles.likes}>
@@ -67,7 +67,7 @@ export default class Post extends Component {
                             source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
-                {this.exibeLikes(foto.likers)}
+                {this.exibeLikes(foto)}
                 {this.exibeLegenda(foto)}
             </View>
         );
