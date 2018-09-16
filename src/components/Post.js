@@ -22,6 +22,11 @@ export default class Post extends Component {
                 </View>
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
+
+                <View style={styles.rodape}>
+                    <Image style={styles.botaoDeLike}
+                        source={require('../../resources/img/s2.png')} />
+                </View>
             </View>
         );
     }
@@ -42,5 +47,12 @@ const styles = StyleSheet.create({
     foto: {
         width: width,
         height: width,
+    },
+    rodape: {
+        margin: 10,
+    },
+    botaoDeLike: {
+        height: 40,
+        width: 40,
     },
 });
