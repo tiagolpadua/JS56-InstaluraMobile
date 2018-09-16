@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, TextInput, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import InputComentario from './InputComentario';
 
 const width = Dimensions.get('screen').width;
 
@@ -105,17 +106,7 @@ export default class Post extends Component {
                         <Text style={styles.tituloComentario}>{comentario.login}</Text>
                         <Text>{comentario.texto}</Text>
                     </View>)}
-                <View style={styles.novoComentario}>
-                    <TextInput style={styles.input}
-                        underlineColorAndroid="transparent"
-                        placeholder="Adicione um comentário..."
-                        ref={input => this.inputComentario = input}
-                        onChangeText={texto => this.setState({ valorComentario: texto })} />
-                    <TouchableOpacity onPress={this.adicionaComentario}>
-                        <Image style={styles.icone}
-                            source={require('../../resources/img/send.png')} />
-                    </TouchableOpacity>
-                </View>
+                <InputComentario />
             </View>
         );
     }
