@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { TextInput, TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 const width = Dimensions.get('screen').width;
 
@@ -7,7 +7,7 @@ export default class Post extends Component {
 
     constructor(props) {
         super(props);
-        this.props.foto.comentarios = [{id: '78787',texto: 'um comentário', login: 'um usuário'}];
+        this.props.foto.comentarios = [{ id: '78787', texto: 'um comentário', login: 'um usuário' }];
         this.state = {
             foto: this.props.foto
         }
@@ -91,6 +91,11 @@ export default class Post extends Component {
                         <Text>{comentario.texto}</Text>
                     </View>
                 )}
+                <TextInput style={styles.input}
+                    placeholder="Adicione um comentário..." />
+
+                <Image style={styles.icone}
+                    source={require('../../resources/img/send.png')} />
             </View>
         );
     }
@@ -128,5 +133,12 @@ const styles = StyleSheet.create({
     tituloComentario: {
         fontWeight: 'bold',
         marginRight: 5,
+    },
+    input: {
+        height: 40,
+    },
+    icone: {
+        height: 30,
+        width: 30,
     },
 });
