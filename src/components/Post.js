@@ -95,7 +95,7 @@ export default class Post extends Component {
                         <Text style={styles.tituloComentario}>{comentario.login}</Text>
                         <Text>{comentario.texto}</Text>
                     </View>
-                )}
+                )}  
                 <View style={styles.novoComentario}>
                     <TextInput style={styles.input}
                         placeholder="Adicione um comentário..."
