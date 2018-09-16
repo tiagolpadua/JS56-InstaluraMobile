@@ -91,11 +91,11 @@ export default class Post extends Component {
                         <Text>{comentario.texto}</Text>
                     </View>
                 )}
-                <TextInput style={styles.input}
-                    placeholder="Adicione um comentário..." />
-
-                <Image style={styles.icone}
-                    source={require('../../resources/img/send.png')} />
+                <View style={styles.novoComentario}>
+                    <TextInput style={styles.input}
+                        placeholder="Adicione um comentário..." /><Image style={styles.icone}
+                            source={require('../../resources/img/send.png')} />
+                </View>
             </View>
         );
     }
@@ -133,6 +133,12 @@ const styles = StyleSheet.create({
     tituloComentario: {
         fontWeight: 'bold',
         marginRight: 5,
+    },
+    novoComentario: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
     },
     input: {
         height: 40,
