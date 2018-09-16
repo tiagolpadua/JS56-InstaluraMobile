@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ddd',
     },
     input: {
+        flex: 1,
         height: 40,
     },
     icone: {
