@@ -19,15 +19,16 @@ export default class Post extends Component {
     }
 
     adicionaComentario = () => {
-        if (this.state.valorComentario === '')
+        console.warn('adicionaComentario');
+        if (valorComentario === '')
             return;
-        const novaLista = [...this.state.foto.comentarios, {
-            id: this.state.valorComentario,
+        const novaLista = [...foto.comentarios, {
+            id: valorComentario,
             login: 'meuUsuario',
-            texto: this.state.valorComentario,
+            texto: valorComentario,
         }];
         const fotoAtualizada = {
-            ...this.state.foto,
+            ...foto,
             comentarios: novaLista,
         }
         this.setState({ foto: fotoAtualizada, valorComentario: '' });
@@ -106,7 +107,7 @@ export default class Post extends Component {
                         <Text style={styles.tituloComentario}>{comentario.login}</Text>
                         <Text>{comentario.texto}</Text>
                     </View>)}
-                <InputComentario />
+                <InputComentario comentarioCallback={this.adicionaComentario} />
             </View>
         );
     }
