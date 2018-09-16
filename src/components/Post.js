@@ -41,9 +41,12 @@ export default class Post extends Component {
                             source={this.carregaIcone(foto.likeada)} />
                     </TouchableOpacity>
                 </View>
-                <Text style={styles.likes}>
-                    {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
-                </Text>
+                {foto.likers.length > 0 ?
+                    <Text style={styles.likes}>
+                        {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
+                    </Text> :
+                    null
+                }
             </View>
         );
     }
