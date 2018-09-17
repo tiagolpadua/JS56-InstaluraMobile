@@ -34,27 +34,6 @@ export default class Post extends Component {
         inputComentario.clear();
     }
 
-    like = () => {
-        const { foto } = this.state;
-        let novaLista = [];
-        if (!foto.likeada) {
-            novaLista = [
-                ...foto.likers,
-                { login: 'meuUsuario' }
-            ];
-        } else {
-            novaLista = foto.likers.filter(liker => {
-                return liker.login !== 'meuUsuario'
-            });
-        }
-        const fotoAtualizada = {
-            ...foto,
-            likeada: !foto.likeada,
-            likers: novaLista
-        }
-        this.setState({ foto: fotoAtualizada });
-    }
-
     exibeLikes(foto) {
         if (foto.likers.length <= 0)
             return;
@@ -84,7 +63,8 @@ export default class Post extends Component {
     }
 
     render() {
-        const { foto } = this.state;
+        const { foto, likeCallback, comentarioCallback } = this.props;
+
         return (
             <View>
                 <View style={styles.cabecalho}>
@@ -95,14 +75,15 @@ export default class Post extends Component {
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
                 <View style={styles.rodape}>
-                    <Likes foto={foto} likeCallback={this.like} />
+                    <Likes foto={foto} likeCallback={likeCallback} />
                     {this.exibeLegenda(foto)}
                     {foto.comentarios.map(comentario =>
                         <View style={styles.comentario} key={comentario.id}>
                             <Text style={styles.tituloComentario}>{comentario.login}</Text>
                             <Text>{comentario.texto}</Text>
                         </View>)}
-                    <InputComentario comentarioCallback={this.adicionaComentario} />
+                    <InputComentario idFoto={foto.id}
+                        comentarioCallback={comentarioCallback} />
                 </View>
             </View>
         );
