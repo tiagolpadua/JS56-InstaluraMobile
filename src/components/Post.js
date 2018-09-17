@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, TextInput, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import InputComentario from './InputComentario';
+import Likes from './Likes';
 
 const width = Dimensions.get('screen').width;
 
@@ -17,20 +19,19 @@ export default class Post extends Component {
             require('../../resources/img/s2.png')
     }
 
-    adicionaComentario = () => {
-        if (this.state.valorComentario === '')
-            return;
+    adicionaComentario = (valorComentario, inputComentario) => {
+        if (valorComentario === '') return;
         const novaLista = [...this.state.foto.comentarios, {
-            id: this.state.valorComentario,
+            id: valorComentario,
             login: 'meuUsuario',
-            texto: this.state.valorComentario,
+            texto: valorComentario,
         }];
         const fotoAtualizada = {
             ...this.state.foto,
             comentarios: novaLista,
         }
-        this.setState({ foto: fotoAtualizada, valorComentario: '' });
-        this.inputComentario.clear();
+        this.setState({ foto: fotoAtualizada });
+        inputComentario.clear();
     }
 
     like = () => {
@@ -94,26 +95,14 @@ export default class Post extends Component {
                 <Image source={{ uri: foto.urlFoto }}
                     style={styles.foto} />
                 <View style={styles.rodape}>
-                    <TouchableOpacity onPress={this.like}>
-                        <Image style={styles.botaoDeLike} source={this.carregaIcone(foto.likeada)} />
-                    </TouchableOpacity>
-                </View>
-                {this.exibeLikes(foto)}
-                {this.exibeLegenda(foto)}
-                {foto.comentarios.map(comentario =>
-                    <View style={styles.comentario} key={comentario.id}>
-                        <Text style={styles.tituloComentario}>{comentario.login}</Text>
-                        <Text>{comentario.texto}</Text>
-                    </View>)}
-                <View style={styles.novoComentario}>
-                    <TextInput style={styles.input}
-                        placeholder="Adicione um comentário..."
-                        ref={input => this.inputComentario = input}
-                        onChangeText={texto => this.setState({ valorComentario: texto })} />
-                    <TouchableOpacity onPress={this.adicionaComentario}>
-                        <Image style={styles.icone}
-                            source={require('../../resources/img/send.png')} />
-                    </TouchableOpacity>
+                    <Likes foto={foto} likeCallback={this.like} />
+                    {this.exibeLegenda(foto)}
+                    {foto.comentarios.map(comentario =>
+                        <View style={styles.comentario} key={comentario.id}>
+                            <Text style={styles.tituloComentario}>{comentario.login}</Text>
+                            <Text>{comentario.texto}</Text>
+                        </View>)}
+                    <InputComentario comentarioCallback={this.adicionaComentario} />
                 </View>
             </View>
         );
