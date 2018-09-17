@@ -19,21 +19,6 @@ export default class Post extends Component {
             require('../../resources/img/s2.png')
     }
 
-    adicionaComentario = (valorComentario, inputComentario) => {
-        if (valorComentario === '') return;
-        const novaLista = [...this.state.foto.comentarios, {
-            id: valorComentario,
-            login: 'meuUsuario',
-            texto: valorComentario,
-        }];
-        const fotoAtualizada = {
-            ...this.state.foto,
-            comentarios: novaLista,
-        }
-        this.setState({ foto: fotoAtualizada });
-        inputComentario.clear();
-    }
-
     exibeLikes(foto) {
         if (foto.likers.length <= 0)
             return;
@@ -63,8 +48,8 @@ export default class Post extends Component {
     }
 
     render() {
-        const { foto, likeCallback } = this.props;
-        
+        const { foto, likeCallback, comentarioCallback } = this.props;
+
         return (
             <View>
                 <View style={styles.cabecalho}>
@@ -82,7 +67,8 @@ export default class Post extends Component {
                             <Text style={styles.tituloComentario}>{comentario.login}</Text>
                             <Text>{comentario.texto}</Text>
                         </View>)}
-                    <InputComentario comentarioCallback={this.adicionaComentario} />
+                    <InputComentario idFoto={foto.id}
+                        comentarioCallback={comentarioCallback} />
                 </View>
             </View>
         );
