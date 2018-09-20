@@ -18,9 +18,15 @@ export default class Login extends Component {
             senha: '',
         }
     }
+    
     efetuaLogin = () => {
-        // ainda sem implementação ...
-    }
+        const uri = "http://localhost:8080/api/public/login";
+        fetch(uri)
+        .then(response => {
+        return response.text();
+        })
+        .then(token => console.warn(token));
+        }
 
     render() {
         return (
