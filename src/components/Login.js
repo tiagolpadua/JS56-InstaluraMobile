@@ -23,7 +23,9 @@ export default class Login extends Component {
         const uri = "http://localhost:8080/api/public/login";
         fetch(uri)
             .then(response => {
-                return response.text();
+                if (response.ok)
+                    return response.text();
+                throw new Error('Não foi possível efetuar login');
             })
             .then(token => console.warn(token));
     }
