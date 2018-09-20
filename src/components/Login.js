@@ -21,7 +21,17 @@ export default class Login extends Component {
 
     efetuaLogin = () => {
         const uri = "http://localhost:8080/api/public/login";
-        fetch(uri)
+        const requestInfo = {
+            method: 'POST',
+            body: JSON.strigify({
+                login: this.state.usuario,
+                senha: this.state.senha
+            }),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        };
+        fetch(uri, requestInfo)
             .then(response => {
                 if (response.ok)
                     return response.text();
@@ -36,9 +46,12 @@ export default class Login extends Component {
                 <Text style={styles.titulo}>Instalura</Text>
                 <View style={styles.form}>
                     <TextInput style={styles.input}
+                        autoCapitalize="none"
                         placeholder="Usuário..."
                         onChangeText={texto => this.setState({ usuario: texto })} />
                     <TextInput style={styles.input}
+                        autoCapitalize="none"
+                        secureTextEntry={true}
                         placeholder="Senha..."
                         onChangeText={texto => this.setState({ senha: texto })} />
                     <Button title="Login" onPress={this.efetuaLogin} />
