@@ -16,6 +16,7 @@ export default class Login extends Component {
         this.state = {
             usuario: '',
             senha: '',
+            mensagem: '',
         }
     }
 
@@ -23,7 +24,7 @@ export default class Login extends Component {
         const uri = "http://localhost:8080/api/public/login";
         const requestInfo = {
             method: 'POST',
-            body: JSON.strigify({
+            body: JSON.stringify({
                 login: this.state.usuario,
                 senha: this.state.senha
             }),
@@ -41,6 +42,7 @@ export default class Login extends Component {
                 AsyncStorage.setItem('token', token);
                 AsyncStorage.setItem('usuario', this.state.usuario);
             })
+            .catch(error => this.setState({ mensagem: error.message }));
     }
 
     render() {
@@ -59,6 +61,9 @@ export default class Login extends Component {
                         onChangeText={texto => this.setState({ senha: texto })} />
                     <Button title="Login" onPress={this.efetuaLogin} />
                 </View>
+                <Text style={styles.mensagem}>
+                    {this.state.mensagem}
+                </Text>
             </View>
         );
     }
@@ -80,5 +85,9 @@ const styles = StyleSheet.create({
     titulo: {
         fontWeight: 'bold',
         fontSize: 26,
+    },
+    mensagem: {
+        marginTop: 15,
+        color: '#e74c3c'
     }
 });
