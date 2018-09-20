@@ -37,7 +37,10 @@ export default class Login extends Component {
                     return response.text();
                 throw new Error('Não foi possível efetuar login');
             })
-            .then(token => console.warn(token));
+            .then(token => {
+                AsyncStorage.setItem('token', token);
+                AsyncStorage.setItem('usuario', this.state.usuario);
+            })
     }
 
     render() {
