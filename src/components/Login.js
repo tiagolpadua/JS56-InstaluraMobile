@@ -10,6 +10,18 @@ import {
 
 const width = Dimensions.get('screen').width;
 export default class Login extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            usuario: '',
+            senha: '',
+        }
+    }
+    efetuaLogin = () => {
+        // ainda sem implementação ...
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -21,7 +33,7 @@ export default class Login extends Component {
                     <TextInput style={styles.input}
                         placeholder="Senha..."
                         onChangeText={texto => this.setState({ senha: texto })} />
-                    <Button title="Login" onPress={() => console.warn('Login')} />
+                    <Button title="Login" onPress={this.efetuaLogin} />
                 </View>
             </View>
         );
