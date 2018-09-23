@@ -39,6 +39,10 @@ export default class Login extends Component {
             .then(token => {
                 AsyncStorage.setItem('token', token);
                 AsyncStorage.setItem('usuario', this.state.usuario);
+                this.props.navigator.push({
+                    screen: 'Feed',
+                    title: 'Instalura'
+                });
             })
             .catch(error => this.setState({ mensagem: error.message }));
     }
