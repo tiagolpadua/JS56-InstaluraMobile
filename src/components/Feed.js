@@ -11,9 +11,19 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    fetch('https://instalura-api.herokuapp.com/api/public/fotos/rafael')
+    const uri = 'https://instalura-api.herokuapp.com/api/fotos';
+
+    AsyncStorage.getItem('token')
+      .then(token => {
+        return {
+          headers: new Headers({
+            "X-AUTH-TOKEN": token
+          })
+        }
+      })
+      .then(requestInfo => fetch(uri, requestInfo))
       .then(resposta => resposta.json())
-      .then(json => this.setState({ fotos: json }));
+      .then(json => this.setState({ fotos: json }))
   }
 
   buscaPorId(idFoto) {
@@ -46,27 +56,34 @@ export default class Feed extends Component {
 
   like = (idFoto) => {
     const foto = this.buscaPorId(idFoto);
-    let novaLista = [];
-    if (!foto.likeada) {
-      novaLista = [
-        ...foto.likers,
-        { login: 'meuUsuario' }
-      ];
-    } else {
-      novaLista = foto.likers.filter(liker => {
-        return liker.login !== 'meuUsuario'
-      });
-    }
-    const fotoAtualizada = {
-      ...foto,
-      likeada: !foto.likeada,
-      likers: novaLista
-    }
-    const fotos = atualizaFotos(fotoAtualizada);
-    this.setState({ fotos });
+    AsyncStorage.getItem('usuario')
+      .then(usuarioLogado => {
+        let novaLista = [];
+        if (!foto.likeada) {
+          novaLista = [
+            ...foto.likers,
+            { login: usuarioLogado }
+          ];
+        } else {
+          novaLista = foto.likers.filter(liker => {
+            return liker.login !== usuarioLogado
+          });
+        }
+        return novaLista;
+      })
+      .then(novaLista => {
+        const fotoAtualizada = {
+          ...foto,
+          likeada: !foto.likeada,
+          likers: novaLista
+        };
+        const fotos = this.atualizaFotos(fotoAtualizada);
+        this.setState({ fotos });
+      })
+      .catch(err => console.warn('Erro ao curtir: ' + err));
   }
 
-  logout =() => {
+  logout = () => {
     AsyncStorage.removeItem('usuario');
     AsyncStorage.removeItem('token');
     this.props.navigator.resetTo({
