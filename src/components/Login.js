@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Dimensions, StyleSheet, Text, TextInput, View } from 'react-native';
+import { AsyncStorage, Dimensions, StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 const width = Dimensions.get('screen').width;
 export default class Login extends Component {
     constructor() {
         super();
         this.state = {
-            usuario: '',
-            senha: '',
+            usuario: 'Rafael',
+            senha: '123456',
             mensagem: '',
         }
     }
@@ -22,7 +22,7 @@ export default class Login extends Component {
         const uri = "https://instalura-api.herokuapp.com/api/public/login";
         const requestInfo = {
             method: 'POST',
-            body: JSON.strigify({
+            body: JSON.stringify({
                 login: this.state.usuario,
                 senha: this.state.senha
             }),
@@ -39,7 +39,13 @@ export default class Login extends Component {
             .then(token => {
                 AsyncStorage.setItem('token', token);
                 AsyncStorage.setItem('usuario', this.state.usuario);
+                /*
                 this.props.navigator.push({
+                    screen: 'Feed',
+                    title: 'Instalura'
+                });
+                */
+                this.props.navigator.resetTo({
                     screen: 'Feed',
                     title: 'Instalura'
                 });
@@ -55,12 +61,15 @@ export default class Login extends Component {
                     <TextInput style={styles.input}
                         autoCapitalize="none"
                         placeholder="Usuário..."
+                        defaultValue={this.state.usuario}
                         onChangeText={texto => this.setState({ usuario: texto })} />
                     <TextInput style={styles.input}
                         autoCapitalize="none"
                         secureTextEntry={true}
                         placeholder="Senha..."
+                        defaultValue={this.state.senha}
                         onChangeText={texto => this.setState({ senha: texto })} />
+                <Button title="Login" onPress={this.efetuaLogin}/>
                 </View>
                 <Text style={styles.mensagem}>
                     {this.state.mensagem}

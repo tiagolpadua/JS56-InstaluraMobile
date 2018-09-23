@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, Button, View, AsyncStorage } from 'react-native';
 import Post from './Post';
 
 export default class Feed extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       fotos: []
     }
@@ -66,17 +66,29 @@ export default class Feed extends Component {
     this.setState({ fotos });
   }
 
+  logout =() => {
+    AsyncStorage.removeItem('usuario');
+    AsyncStorage.removeItem('token');
+    this.props.navigator.resetTo({
+      screen: 'Login',
+      title: 'Instalura'
+    });
+  }
+
   render() {
     return (
-      <FlatList style={styles.container}
-        keyExtractor={item => item.id + ''}
-        data={this.state.fotos}
-        renderItem={({ item }) =>
-          <Post foto={item}
-            likeCallback={this.like}
-            comentarioCallback={this.adicionaComentario} />
-        }
-      />
+      <View>
+        <Button title="Logout" onPress={this.logout} />
+        <FlatList style={styles.container}
+          keyExtractor={item => item.id + ''}
+          data={this.state.fotos}
+          renderItem={({ item }) =>
+            <Post foto={item}
+              likeCallback={this.like}
+              comentarioCallback={this.adicionaComentario} />
+          }
+        />
+      </View>
     );
   }
 }
