@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import InputComentario from './InputComentario';
 import Likes from './Likes';
 
