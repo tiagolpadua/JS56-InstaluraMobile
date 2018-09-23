@@ -56,6 +56,19 @@ export default class Feed extends Component {
 
   like = (idFoto) => {
     const foto = this.buscaPorId(idFoto);
+
+    const uri = `https://instalura-api.herokuapp.com/api/fotos/${idFoto}/like`;
+    AsyncStorage.getItem('token')
+      .then(token => {
+        return {
+          method: 'POST',
+          headers: new Headers({
+            "X-AUTH-TOKEN": token
+          })
+        }
+      })
+      .then(requestInfo => fetch(uri, requestInfo));
+
     AsyncStorage.getItem('usuario')
       .then(usuarioLogado => {
         let novaLista = [];
