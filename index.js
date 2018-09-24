@@ -7,15 +7,7 @@ import Feed from './src/components/Feed';
 // AppRegistry.registerComponent(appName, () => Login);
 Navigation.registerComponent('Login', () => Login);
 Navigation.registerComponent('Feed', () => Feed);
-
-/*
-Navigation.startSingleScreenApp({
-    screen: {
-        screen: 'Login',
-        title: 'Login',
-    }
-});
-*/
+Navigation.registerComponent('PerfilUsuario', () => Feed);
 
 AsyncStorage.getItem('token')
     .then(token => {

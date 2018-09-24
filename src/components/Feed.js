@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, Button, View, AsyncStorage, TouchableOpacity, Text } from 'react-native';
-import Post from './Post';
-import InstaluraFetchService from '../services/InstaluraFetchService';
+import { AsyncStorage, Button, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Notificacao from '../api/Notificacao';
+import InstaluraFetchService from '../services/InstaluraFetchService';
+import HeaderUsuario from './HeaderUsuario';
+import Post from './Post';
 
 export default class Feed extends Component {
   constructor(props) {
@@ -13,13 +14,22 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    this.carrega();
+    this.props.navigator.setOnNavigatorEvent(evento => {
+      if (evento.id === 'willAppear')
+        this.carrega();
+    });
   }
 
   carrega() {
-    InstaluraFetchService.get('/fotos')
-      .then(json => this.setState({ fotos: json, status: 'NORMAL' }))
-      .catch(e => this.setState({ status: 'FALHA_CARREGAMENTO' }));
+    let uri = '/fotos';
+    if (this.props.usuario)
+      uri = `/public/fotos/${this.props.usuario}`;
+    InstaluraFetchService.get(uri)
+      .then(json => this.setState({ fotos: json }));
+
+    //InstaluraFetchService.get('/fotos')
+    //  .then(json => this.setState({ fotos: json, status: 'NORMAL' }))
+    //  .catch(e => this.setState({ status: 'FALHA_CARREGAMENTO' }));
   }
 
   buscaPorId(idFoto) {
@@ -53,6 +63,20 @@ export default class Feed extends Component {
         this.setState({ fotos });
         inputComentario.clear();
       });
+  }
+
+  verPerfilUsuario = (idFoto) => {
+    const foto = this.buscaPorId(idFoto);
+    this.props.navigator.push({
+      screen: 'PerfilUsuario',
+      title: foto.loginUsuario,
+      backButtonTitle: '',
+      passProps: {
+        usuario: foto.loginUsuario,
+        fotoDePerfil: foto.urlPerfil,
+        posts: this.state.fotos.length
+      }
+    });
   }
 
   like = (idFoto) => {
@@ -102,6 +126,12 @@ export default class Feed extends Component {
     });
   }
 
+  exibeHeader() {
+    if (this.props.usuario)
+      return <HeaderUsuario {...this.props}
+        posts={this.state.fotos.length} />;
+  }
+
   render() {
     if (this.state.status === 'FALHA_CARREGAMENTO')
       return (
@@ -113,19 +143,20 @@ export default class Feed extends Component {
       );
 
     return (
-
-      <View>
+      <ScrollView>
         <Button title="Logout" onPress={this.logout} />
+        {this.exibeHeader()}
         <FlatList style={styles.container}
           keyExtractor={item => item.id + ''}
           data={this.state.fotos}
           renderItem={({ item }) =>
             <Post foto={item}
               likeCallback={this.like}
-              comentarioCallback={this.adicionaComentario} />
+              comentarioCallback={this.adicionaComentario}
+              verPerfilCallback={this.verPerfilUsuario} />
           }
         />
-      </View>
+      </ScrollView>
     );
   }
 }
