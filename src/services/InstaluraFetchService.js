@@ -13,12 +13,16 @@ export default class InstaluraFetchService {
                 }
             })
             .then(requestInfo => fetch(uri, requestInfo))
-            .then(resposta => resposta.json());
+            .then(resposta => {
+                if (resposta.ok)
+                    return resposta.json();
+                throw new Error('Não foi possível completar a operação');
+            });
         return jsonPromisse;
     }
 
     static post(recurso, dados) {
-        const uri = 'https://instalura-api.herokuapp.com/api' + recurso;
+        const uri = 'https://instalura-api.herokuapp.com/xapi' + recurso;
         return AsyncStorage.getItem('token')
             .then(token => {
                 return {
@@ -31,6 +35,10 @@ export default class InstaluraFetchService {
                 };
             })
             .then(requestInfo => fetch(uri, requestInfo))
-            .then(resposta => resposta.json());
+            .then(resposta => {
+                if (resposta.ok)
+                    return resposta.json();
+                throw new Error('Não foi possível completar a operação');
+            });
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, StyleSheet, Button, View, AsyncStorage } from 'react-native';
 import Post from './Post';
 import InstaluraFetchService from '../services/InstaluraFetchService';
+import Notificacao from '../api/Notificacao';
 
 export default class Feed extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class Feed extends Component {
   like = (idFoto) => {
     const foto = this.buscaPorId(idFoto);
 
-    const uri = `https://instalura-api.herokuapp.com/api/fotos/${idFoto}/like`;
+    const listaOriginal = this.state.fotos;
 
     AsyncStorage.getItem('usuario')
       .then(usuarioLogado => {
@@ -80,7 +81,11 @@ export default class Feed extends Component {
       })
       .catch(err => console.warn('Erro ao curtir: ' + err));
 
-    InstaluraFetchService.post(`/fotos/${idFoto}/like`);
+    InstaluraFetchService.post(`/fotos/${idFoto}/like`)
+      .catch(e => {
+        this.setState({fotos: listaOriginal})
+        Notificacao.exibe('Ops..', 'Algo deu errado ao curtir.');
+      });
   }
 
   logout = () => {
