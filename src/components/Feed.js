@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, Button, View, AsyncStorage } from 'react-native';
+import { FlatList, StyleSheet, Button, View, AsyncStorage, TouchableOpacity, Text } from 'react-native';
 import Post from './Post';
 import InstaluraFetchService from '../services/InstaluraFetchService';
 import Notificacao from '../api/Notificacao';
@@ -13,8 +13,13 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
+    this.carrega();
+  }
+
+  carrega() {
     InstaluraFetchService.get('/fotos')
-      .then(json => this.setState({ fotos: json }))
+      .then(json => this.setState({ fotos: json, status: 'NORMAL' }))
+      .catch(e => this.setState({ status: 'FALHA_CARREGAMENTO' }));
   }
 
   buscaPorId(idFoto) {
@@ -83,7 +88,7 @@ export default class Feed extends Component {
 
     InstaluraFetchService.post(`/fotos/${idFoto}/like`)
       .catch(e => {
-        this.setState({fotos: listaOriginal})
+        this.setState({ fotos: listaOriginal })
         Notificacao.exibe('Ops..', 'Algo deu errado ao curtir.');
       });
   }
@@ -98,7 +103,17 @@ export default class Feed extends Component {
   }
 
   render() {
+    if (this.state.status === 'FALHA_CARREGAMENTO')
+      return (
+        <TouchableOpacity style={styles.container} onPress={this.carrega.bind(this)}>
+          <Text style={[styles.texto, styles.titulo]}>Ops..</Text>
+          <Text style={styles.texto}>Não foi possível carregar o feed</Text>
+          <Text style={styles.texto}>Toque para tentar novamente</Text>
+        </TouchableOpacity>
+      );
+
     return (
+
       <View>
         <Button title="Logout" onPress={this.logout} />
         <FlatList style={styles.container}
