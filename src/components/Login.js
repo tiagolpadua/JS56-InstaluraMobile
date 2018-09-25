@@ -44,13 +44,18 @@ export default class Login extends Component {
                     screen: 'Feed',
                     title: 'Instalura'
                 });
-                */
                 this.props.navigator.resetTo({
                     screen: 'Feed',
                     title: 'Instalura'
                 });
+                */
             })
             .catch(error => this.setState({ mensagem: error.message }));
+
+            this.props.navigator.resetTo({
+                screen: 'Feed',
+                title: 'Instalura'
+            });
     }
 
     render() {

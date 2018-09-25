@@ -66,7 +66,7 @@ export default class Feed extends Component {
     this.setState({ fotos });
   }
 
-  logout =() => {
+  logout = () => {
     AsyncStorage.removeItem('usuario');
     AsyncStorage.removeItem('token');
     this.props.navigator.resetTo({
@@ -79,6 +79,12 @@ export default class Feed extends Component {
     return (
       <View>
         <Button title="Logout" onPress={this.logout} />
+        <Button title="Modal" onPress={() => {
+          this.props.navigator.showModal({
+            screen: 'AluraLingua',
+            title: 'Alura Línguas'
+          });
+        }} />
         <FlatList style={styles.container}
           keyExtractor={item => item.id + ''}
           data={this.state.fotos}
