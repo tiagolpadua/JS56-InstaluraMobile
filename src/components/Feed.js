@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { ScrollView, Dimensions, Image, Text, View } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
+import Post from "./Post";
 
-const width = Dimensions.get("screen").width;
 export default class Feed extends Component {
   render() {
     const fotos = [
@@ -9,32 +9,18 @@ export default class Feed extends Component {
       { id: 2, usuario: "alberto" },
       { id: 3, usuario: "vitor" }
     ];
-    /*
-    return	(
-      <View>
-        {fotos.map(foto	=>
-          <Text>{foto.usuario}</Text>
-          <Image	source={require('../../resources/img/alura.png')}
-                  style={{width:	width,	height:	width}}	/>								
-        )}
-      </View>
-    );
-    */
-
     return (
-      <ScrollView>
-        <View>
-          {fotos.map(foto => (
-            <View key={foto.id}>
-              <Text>{foto.usuario}</Text>
-              <Image
-                source={require("../../resources/img/alura.png")}
-                style={{ width: width, height: width }}
-              />
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      <FlatList
+        style={styles.container}
+        keyExtractor={item => item.id + ""}
+        data={fotos}
+        renderItem={({ item }) => <Post foto={item} />}
+      />
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 20
+  }
+});
