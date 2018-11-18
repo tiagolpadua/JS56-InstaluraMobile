@@ -9,6 +9,7 @@ import {
   View
 } from "react-native";
 import InputComentario from "./InputComentario";
+import Likes from "./Likes";
 
 const width = Dimensions.get("screen").width;
 
@@ -102,12 +103,7 @@ export default class Post extends Component {
         </View>
         <Image source={{ uri: foto.urlFoto }} style={styles.foto} />
         <View style={styles.rodape}>
-          <TouchableOpacity onPress={this.like}>
-            <Image
-              style={styles.botaoDeLike}
-              source={this.carregaIcone(foto.likeada)}
-            />
-          </TouchableOpacity>
+          <Likes foto={foto} likeCallback={this.like} />
           {this.exibeLikes(foto.likers)}
           {this.exibeLegenda(foto)}
           {foto.comentarios.map(comentario => (
