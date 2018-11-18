@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import {
-  Text,
+  AsyncStorage,
   Button,
   Dimensions,
-  View,
+  StyleSheet,
+  Text,
   TextInput,
-  AsyncStorage
+  View
 } from "react-native";
 const width = Dimensions.get("screen").width;
 export default class Login extends Component {
@@ -22,7 +23,7 @@ export default class Login extends Component {
     const uri = "https://instalura-api.herokuapp.com/api/public/login";
     const requestInfo = {
       method: "POST",
-      body: JSON.strigify({
+      body: JSON.stringify({
         login: this.state.usuario,
         senha: this.state.senha
       }),
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 26
   },
   mensagem: {
-    arginTop: 15,
+    marginTop: 15,
     color: "#e74c3c"
   }
 });

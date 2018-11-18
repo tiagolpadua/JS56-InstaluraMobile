@@ -1,3 +1,3 @@
 import { AppRegistry } from "react-native";
-import Login from "./screens/Login";
+import Login from "./src/screens/Login";
 AppRegistry.registerComponent("InstaluraMobile", () => Login);
