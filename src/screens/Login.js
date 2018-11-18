@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import {
   AsyncStorage,
@@ -39,6 +40,11 @@ export default class Login extends Component {
       .then(token => {
         AsyncStorage.setItem("token", token);
         AsyncStorage.setItem("usuario", this.state.usuario);
+        //	navegue	para	o	feed
+        this.props.navigator.resetTo({
+          screen: "Feed",
+          title: "Instalura"
+        });
       })
       .catch(error => this.setState({ mensagem: error.message }));
   };
@@ -74,6 +80,11 @@ export default class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  navigator: PropTypes.object
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
