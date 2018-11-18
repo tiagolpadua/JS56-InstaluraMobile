@@ -1,13 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import InputComentario from "./InputComentario";
 import Likes from "./Likes";
 
@@ -16,10 +9,6 @@ const width = Dimensions.get("screen").width;
 export default class Post extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      foto: this.props.foto,
-      valorComentario: ""
-    };
   }
 
   carregaIcone(likeada) {
@@ -57,44 +46,9 @@ export default class Post extends Component {
     );
   }
 
-  adicionaComentario = (valorComentario, inputComentario) => {
-    if (valorComentario === "") return;
-    const novaLista = [
-      ...this.state.foto.comentarios,
-      {
-        id: valorComentario,
-        login: "meuUsuario",
-        texto: valorComentario
-      }
-    ];
-    const fotoAtualizada = {
-      ...this.state.foto,
-      comentarios: novaLista
-    };
-    this.setState({ foto: fotoAtualizada });
-    inputComentario.clear();
-  };
-
-  like = () => {
-    const { foto } = this.state;
-    let novaLista = [];
-    if (!foto.likeada) {
-      novaLista = [...foto.likers, { login: "meuUsuario" }];
-    } else {
-      novaLista = foto.likers.filter(liker => {
-        return liker.login !== "meuUsuario";
-      });
-    }
-    const fotoAtualizada = {
-      ...foto,
-      likeada: !foto.likeada,
-      likers: novaLista
-    };
-    this.setState({ foto: fotoAtualizada });
-  };
-
   render() {
-    const { foto } = this.state;
+    const { foto, likeCallback, comentarioCallback } = this.props;
+
     return (
       <View>
         <View style={styles.cabecalho}>
@@ -103,7 +57,7 @@ export default class Post extends Component {
         </View>
         <Image source={{ uri: foto.urlFoto }} style={styles.foto} />
         <View style={styles.rodape}>
-          <Likes foto={foto} likeCallback={this.like} />
+          <Likes foto={foto} likeCallback={likeCallback} />
           {this.exibeLikes(foto.likers)}
           {this.exibeLegenda(foto)}
           {foto.comentarios.map(comentario => (
@@ -112,7 +66,10 @@ export default class Post extends Component {
               <Text>{comentario.texto}</Text>
             </View>
           ))}
-          <InputComentario comentarioCallback={this.adicionaComentario} />
+          <InputComentario
+            idFoto={foto.id}
+            comentarioCallback={comentarioCallback}
+          />
         </View>
       </View>
     );
@@ -120,7 +77,9 @@ export default class Post extends Component {
 }
 
 Post.propTypes = {
-  foto: PropTypes.object
+  foto: PropTypes.object,
+  likeCallback: PropTypes.func,
+  comentarioCallback: PropTypes.func
 };
 
 const styles = StyleSheet.create({
