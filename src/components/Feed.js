@@ -1,26 +1,28 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
-import { Dimensions, Image, Text, View } from "react-native";
+import { FlatList, Dimensions, Image, Text, View } from "react-native";
 
 const width = Dimensions.get("screen").width;
-
 export default class Feed extends Component {
   render() {
+    const fotos = [
+      { id: 1, usuario: "rafael" },
+      { id: 2, usuario: "alberto" },
+      { id: 3, usuario: "vitor" }
+    ];
     return (
-      <View>
-        <Text>rafael</Text>
-        <Image
-          source={require("../../resources/img/alura.png")}
-          style={{ width: width, height: width }}
-        />
-      </View>
+      <FlatList
+        keyExtractor={item => item.id + ""}
+        data={fotos}
+        renderItem={({ item }) => (
+          <View>
+            <Text>{item.usuario}</Text>
+            <Image
+              source={require("../../resources/img/alura.png")}
+              style={{ width: width, height: width }}
+            />
+          </View>
+        )}
+      />
     );
   }
 }
