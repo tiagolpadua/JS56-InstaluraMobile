@@ -6,7 +6,7 @@ export default class Login extends Component {
     constructor() {
         super();
         this.state = {
-            usuario: 'Rafael',
+            usuario: 'rafael',
             senha: '123456',
             mensagem: '',
         }
