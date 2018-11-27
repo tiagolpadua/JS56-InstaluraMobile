@@ -4,7 +4,7 @@ import { AsyncStorage } from "react-native";
 import Login from "./src/components/Login";
 import Feed from "./src/components/Feed";
 import { Provider } from "react-redux";
-import configureStore from "./configureStore";
+import configureStore from "./src/configureStore";
 
 const store = configureStore();
 
