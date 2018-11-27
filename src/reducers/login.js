@@ -1,3 +1,5 @@
+import { LOGIN, LOGOUT } from "../constants";
+
 const initialState = { usuario: null, token: null };
 
 export default function loginReducer(state = initialState, action) {

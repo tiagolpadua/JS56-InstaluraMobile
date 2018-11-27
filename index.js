@@ -10,8 +10,12 @@ const store = configureStore();
 
 // AppRegistry.registerComponent(appName, () => Login);
 Navigation.registerComponent("Login", () => Login, store, Provider);
-Navigation.registerComponent("Feed", () => Feed, store, Provider);
-Navigation.registerComponent("PerfilUsuario", () => Feed, store, Provider);
+// Navigation.registerComponent("Feed", () => Feed, store, Provider);
+// Navigation.registerComponent("PerfilUsuario", () => Feed, store, Provider);
+
+// Navigation.registerComponent("Login", () => Login);
+Navigation.registerComponent("Feed", () => Feed);
+Navigation.registerComponent("PerfilUsuario", () => Feed);
 
 AsyncStorage.getItem("token")
   .then(token => {

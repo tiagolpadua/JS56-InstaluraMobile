@@ -1,14 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { Component } from "react";
-import {
-  AsyncStorage,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Button
-} from "react-native";
-
+import { AsyncStorage, Button, Dimensions, StyleSheet, Text, TextInput, View } from "react-native";
+import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { login, logout } from "../actions";
 
@@ -30,6 +23,7 @@ class Login extends Component {
   }
 
   efetuaLogin = () => {
+    console.warn('efetuaLogin');
     const uri = "https://instalura-api.herokuapp.com/api/public/login";
     const requestInfo = {
       method: "POST",
@@ -50,12 +44,10 @@ class Login extends Component {
         this.props.login({ token, usuario: this.state.usuario });
         // AsyncStorage.setItem("token", token);
         // AsyncStorage.setItem("usuario", this.state.usuario);
-        /*
-                this.props.navigator.push({
-                    screen: 'Feed',
-                    title: 'Instalura'
-                });
-                */
+        this.props.navigator.push({
+            screen: 'Feed',
+            title: 'Instalura'
+        });
         this.props.navigator.resetTo({
           screen: "Feed",
           title: "Instalura"
@@ -125,10 +117,16 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({ login, logout }, dispatch);
 
 Login.propTypes = {
-  login: PropTypes.object
+  login: PropTypes.func,
+  logout: PropTypes.func,
+  navigator: PropTypes.object
 };
+
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Login);
+
+
+// export default Login;
