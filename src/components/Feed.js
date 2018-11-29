@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Button, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { AsyncStorage, Button, FlatList, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Notificacao from '../api/Notificacao';
 import InstaluraFetchService from '../services/InstaluraFetchService';
 import HeaderUsuario from './HeaderUsuario';
@@ -20,12 +20,14 @@ export default class Feed extends Component {
     });
   }
 
-  carrega() {
+  carrega = () => {
     let uri = '/fotos';
     if (this.props.usuario)
       uri = `/public/fotos/${this.props.usuario}`;
+
+    this.setState({ ...this.state, refreshing: true });
     InstaluraFetchService.get(uri)
-      .then(json => this.setState({ fotos: json }));
+      .then(json => this.setState({ fotos: json, refreshing: false }));
 
     //InstaluraFetchService.get('/fotos')
     //  .then(json => this.setState({ fotos: json, status: 'NORMAL' }))
@@ -143,10 +145,12 @@ export default class Feed extends Component {
       );
 
     return (
-      <ScrollView>
+      <View>
         <Button title="Logout" onPress={this.logout} />
         {this.exibeHeader()}
         <FlatList style={styles.container}
+          onRefresh={this.carrega}
+          refreshing={!!this.state.refreshing}
           keyExtractor={item => item.id + ''}
           data={this.state.fotos}
           renderItem={({ item }) =>
@@ -156,7 +160,7 @@ export default class Feed extends Component {
               verPerfilCallback={this.verPerfilUsuario} />
           }
         />
-      </ScrollView>
+      </View>
     );
   }
 }
