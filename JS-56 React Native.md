@@ -1,5 +1,4 @@
-JS-56 React Native
-==================
+# JS-56 React Native
 
 # Cronograma
 
@@ -12,27 +11,35 @@ React Native Life Cicle
 http://bit.ly/js56-rls
 
 ## Dia 1:
+
 Capítulo 1
 
 ## Dia 2:
+
 Capítulo 2, 3 e 4
 
 ## Dia 3:
+
 Capítulo 5 e 6
 
 ## Dia 4:
+
 Capítulo 7
 
 ## Dia 5:
+
 Capítulo 8 e 9
 
 ## Dia 6:
+
 Capítulo 10 e 11
 
 ## Dia 7:
+
 Capítulo 12
 
 ## Dia 8:
+
 Capítulo 13 e 14
 
 # Variáveis de ambiente
@@ -58,7 +65,6 @@ emulator -avd Nexus_5X_API_28 -no-snapshot-load -gpu guest
 # adb via linha de comando
 
 https://devhints.io/adb
-
 
 ```bash
 adb devices -l
@@ -114,8 +120,7 @@ Recursos:
 
 https://s3.amazonaws.com/caelum-online-public/636-react-native-1/resources.zip
 
-http://bit.ly/js56rn
----
+## http://bit.ly/js56rn
 
 # Cap 0 - O que é React e React Native
 
@@ -129,10 +134,7 @@ http://bit.ly/js56rn
 - Necessidade de atualizar a view
 - Mudanças com efeitos em cascata
 - Código difícil de se prever
-- A primeira alternativa é atualizar toda a view
-	- (data) => view
-	- problema de performance - flicker na tela
-	- estratégia ineficente
+- A primeira alternativa é atualizar toda a view - (data) => view - problema de performance - flicker na tela - estratégia ineficente
 - JSX
 - Virtual DOM
 - Warnings que auxiliam o desenvolvedor
@@ -141,10 +143,7 @@ http://bit.ly/js56rn
 - Componentes são a estrutura fundamental das aplicações
 - Componentes são criados de maneira declarativa no React, e isso o diferencia dos demais frameworks
 - Nativo vs Webview
-- Pontos negativos do webview
-	- paralelização de código
-	- gestos
-	- dispositivos nativos
+- Pontos negativos do webview - paralelização de código - gestos - dispositivos nativos
 - Ambiente nativo é mais poderoso que o da web
 - Ambiente nativo é mais hostil
 - Dois conjuntos de desenvolvedores, um para cada dispositivo
@@ -159,7 +158,8 @@ http://bit.ly/js56rn
 - Reimplementação de uma parte do css
 - Reimplementação do flexbox
 - ES6
-------
+
+---
 
 # Cap 0 - O que é React e React Native
 
@@ -168,6 +168,7 @@ http://bit.ly/js56rn
 # Facebook
 
 # React
+
 React (também conhecido como React.js ou ReactJS) é uma biblioteca JavaScript para criar interfaces com o usuário. É mantida pelo Facebook e por uma comunidade de desenvolvedores e empresas individuais.
 
 O React pode ser usado como base no desenvolvimento de aplicativos SPAs ou móveis.
@@ -175,14 +176,15 @@ O React pode ser usado como base no desenvolvimento de aplicativos SPAs ou móve
 ---
 
 # História
+
 O React foi criado no Facebook. Ele foi influenciado pelo XHP, uma estrutura de componentes HTML para PHP. Ele foi usado pela primeira vez no feed de notícias do Facebook em 2011 e, mais tarde, no Instagram.com em 2012. O código foi aberto em maio de 2013.
 
 O React Native, que permite o desenvolvimento nativo de Android e iOS com o React, foi anunciado no conferência de React.js do Facebook em fevereiro de 2015 e de código aberto em março de 2015.
 
-
 ---
 
 ## Declarative
+
 Reaja facilita criar UIs interativas. Crie views simples para cada estado em seu aplicativo e o React atualizará e renderizará com eficiência os componentes corretos quando os dados forem alterados.
 
 As views declarativas tornam seu código mais previsível e mais fácil de depurar.
@@ -190,6 +192,7 @@ As views declarativas tornam seu código mais previsível e mais fácil de depur
 ---
 
 ## Component-Based
+
 Crie componentes encapsulados que gerenciam seu próprio estado e, em seguida, componha-os para criar interfaces de usuário complexas.
 
 Como a lógica do componente é escrita em JavaScript em vez de modelos, você pode facilmente passar dados avançados por meio do seu aplicativo e manter o estado fora do DOM.
@@ -199,19 +202,20 @@ Como a lógica do componente é escrita em JavaScript em vez de modelos, você p
 # React Native
 
 - Crie aplicativos móveis nativos usando JavaScript e React
-     - O React Native permite que você crie aplicativos móveis usando apenas JavaScript.
-     - Ele usa o mesmo design que o React, permitindo compor uma rica interface de usuário móvel a partir de componentes declarativos.
+  - O React Native permite que você crie aplicativos móveis usando apenas JavaScript.
+  - Ele usa o mesmo design que o React, permitindo compor uma rica interface de usuário móvel a partir de componentes declarativos.
 
 ---
 
 - Um aplicativo React Native é um aplicativo móvel real
-     - Com o React Native, você não cria um "aplicativo da Web para dispositivos móveis", um "aplicativo HTML5" ou um "aplicativo híbrido". Você cria um aplicativo móvel real que é indistinguível de um aplicativo criado usando o Objective-C ou o Java. O React Native usa os mesmos blocos de construção fundamentais da interface do usuário dos aplicativos iOS e Android comuns. Você apenas colocaos blocos de construção juntos usando JavaScript e React
+  - Com o React Native, você não cria um "aplicativo da Web para dispositivos móveis", um "aplicativo HTML5" ou um "aplicativo híbrido". Você cria um aplicativo móvel real que é indistinguível de um aplicativo criado usando o Objective-C ou o Java. O React Native usa os mesmos blocos de construção fundamentais da interface do usuário dos aplicativos iOS e Android comuns. Você apenas colocaos blocos de construção juntos usando JavaScript e React
 
 ---
 
 # Híbrido vs Nativo
 
 # Diagrama
+
 ![](https://i.imgur.com/QWejiTb.png)
 
 - O código da regra de negócio em JS é o mesmo para qualquer plataforma
@@ -221,24 +225,22 @@ Como a lógica do componente é escrita em JavaScript em vez de modelos, você p
 # Hello World!
 
 ```jsx
-import React, { Component } from 'react';
-import { AppRegistry, Text } from 'react-native';
+import React, { Component } from "react";
+import { AppRegistry, Text } from "react-native";
 
 export default class HelloWorldApp extends Component {
   render() {
-    return (
-      <Text>Hello world!</Text>
-    );
+    return <Text>Hello world!</Text>;
   }
 }
 
-AppRegistry.registerComponent('HelloWorld', () => HelloWorldApp);
+AppRegistry.registerComponent("HelloWorld", () => HelloWorldApp);
 
 // AppRegistry is the JS entry point to running all React Native apps. App root components should register themselves with AppRegistry.registerComponent, then the native system can load the bundle for the app and then actually run the app when it's ready by invoking AppRegistry.runApplication.
 
 // The ReactJS code can also be imported into another component with the following code:
 
-import HelloWorldApp from './HelloWorldApp';
+import HelloWorldApp from "./HelloWorldApp";
 ```
 
 ---
@@ -250,8 +252,9 @@ import HelloWorldApp from './HelloWorldApp';
 Explicar e testar cada um dos elementos
 
 - Node/NPM para compilar o JSX
-> node --version
-> npm --version
+
+  > node --version
+  > npm --version
 
 - Watchman para observar os arquivos (não precisa no Linux)
 
@@ -260,17 +263,20 @@ Explicar e testar cada um dos elementos
 > react-native --version
 
 - IOS
-    - XCode para compilar para IOS
+
+  - XCode para compilar para IOS
 
 - Android
-    - Java: java -version
-    - Android Studio + Android SDK
-    - Emulador Android
+
+  - Java: java -version
+  - Android Studio + Android SDK
+  - Emulador Android
 
 - Create React App -> https://github.com/react-community/create-react-native-app/issues/516
-https://facebook.github.io/react-native/blog/2017/03/13/introducing-create-react-native-app
+  https://facebook.github.io/react-native/blog/2017/03/13/introducing-create-react-native-app
 
 Exercícios:
+
 - Abrir o SDK Manager
 - ? Criar AVD
 - Executar AVD via android studio
@@ -289,7 +295,7 @@ emulator -avd Nexus_5X_API_28
 
 https://www.androidpit.com.br/como-ativar-depuracao-usb-android
 
-A opção de depuração USB permite a comunicação avançada com um dispositivo. Ao conectá-lo ao PC, podemos utilizar programas que vão interagir em profundidade com o computador, permitindo-nos instalar aplicativos, ler informações do sistema e habilitar as permissões de root. 
+A opção de depuração USB permite a comunicação avançada com um dispositivo. Ao conectá-lo ao PC, podemos utilizar programas que vão interagir em profundidade com o computador, permitindo-nos instalar aplicativos, ler informações do sistema e habilitar as permissões de root.
 
 Tradicionalmente, o desenvolvimento de aplicativos no Android é feito com o Android Studio em um computador. Contudo, para testar o aplicativo é preciso pasá-lo para um dispositivo, onde o código é executado.
 
@@ -317,6 +323,7 @@ Explicar a diferença de Live Reload e Hot Reload
 ---
 
 # E pra rodar no IOS?
+
 Pra executar em um IOS só se vc tiver um MAC, a única outra opção é usando o app expo se a aplicação for desenvolvida usando o create-react-native-app, mas isso é outra história...
 
 ---
@@ -335,15 +342,104 @@ Pra executar em um IOS só se vc tiver um MAC, a única outra opção é usando 
 
 Abrir no vscode e navegar pela estrutura do projeto
 
+---
+
+https://gist.github.com/tiagolpadua/6d1003b2f3930b5487bff4c1c1975ee0
+http://bit.ly/js-56-plugins
+
+- Instalar o eslint e o prettier no projeto:
+
+```bash
+npm install eslint babel-eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier
+```
+
+- Criar o arquivo `.eslintrc` na raiz do projeto
+
+```
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "no-use-before-define": "off",
+    "react/prop-types": "off",
+    "comma-dangle": "off",
+    "react/prefer-stateless-function": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ]
+  },
+  "globals": {
+    "fetch": false
+  },
+  "plugins": ["prettier"]
+}
+```
+
+- Criar o arquivo `.editorconfig`:
+
+```
+root = true
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+```
+
+- Instalar o plugin do eslint e do prettier no VSCode;
+
+- Configurar o VSCode para formatar ao salvar:
+
+File -> Prefferences -> Settings -> Folder Settings -> {}
+
+```
+"settings": {
+  // other settings
+  // formatting using eslint
+  // let editor format using prettier for all other files
+  "editor.formatOnSave": true,
+  // disable editor formatting, so eslint can handle it
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  // available through eslint plugin in vscode
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "javascript.validate.enable": false
+}
+```
+
 2.2 PARA SABER MAIS: NOVO TEMPLATE DE PROJETO
 
 ## Exercício 2.3
 
-Menu do desenvolvedor em dispositivo físico: Balançar o telefone
+3. Menu do desenvolvedor em dispositivo físico: Balançar o telefone, emulador é CTRL+M
+
+4. Faltou registrar o componente:
+
+```js
+AppRegistry.registerComponent("InstaluraMobile", () => App);
+```
+
+É necessário registrar o componente principal através de `AppRegistry.registerComponent('InstaluraMobile', () => InstaluraMobile);`, por onde o carregamento do bundle js da app será iniciado. Só assim a app pode invocar `runApplication` com sucesso.
 
 ---
 
 # Capítulo 3
+
 ## CONSTRUINDO O FEED DO INSTALURA
 
 ---
@@ -351,33 +447,34 @@ Menu do desenvolvedor em dispositivo físico: Balançar o telefone
 - Começar a construir o feed
 - Apresentar uma xxx
 
-
 foto e o nome do usuário que a publicou na app
 
 ---
 
 ```jsx
-import React, { Component } from 'react';
-import { Text, View, Dimensions, Image } from 'react-native';
+import React, { Component } from "react";
+import { Text, View, Dimensions, Image } from "react-native";
 
-const width = Dimensions.get('screen').width;
+const width = Dimensions.get("screen").width;
 
 export default class Feed extends Component {
   render() {
     const fotos = [
-      { id: 1, usuario: 'rafael' },
-      { id: 2, usuario: 'alberto' },
-      { id: 3, usuario: 'vitor' }
+      { id: 1, usuario: "rafael" },
+      { id: 2, usuario: "alberto" },
+      { id: 3, usuario: "vitor" }
     ];
     return (
       <View>
-        {fotos.map(foto =>
+        {fotos.map(foto => (
           <View key={foto.id}>
             <Text>{foto.usuario}</Text>
-            <Image source={require('./alura.png')}
-              style={{ width: width, height: width }} />
+            <Image
+              source={require("./alura.png")}
+              style={{ width: width, height: width }}
+            />
           </View>
-        )}
+        ))}
       </View>
     );
   }
@@ -403,18 +500,22 @@ Debate ScrollView vs Flatlist
 Trocar map por flatlist - https://facebook.github.io/react-native/docs/flatlist
 
 ```jsx
-<FlatList style={{ marginTop: 20 }}
+<FlatList
+  style={{ marginTop: 20 }}
   keyExtractor={item => item.id}
   data={fotos}
-  renderItem={({ item }) =>
+  renderItem={({ item }) => (
     <View>
       <Text>{item.usuario}</Text>
-      <Image source={require('../../resources/img/alura.png')}
-        style={{ width: width, height: width }} />
+      <Image
+        source={require("../../resources/img/alura.png")}
+        style={{ width: width, height: width }}
+      />
     </View>
-  }
+  )}
 />
 ```
+
 Failed child context type: Invalid child context `virtualizedCell.cellKey` of type `number` supplied to `CellRenderer`, expected `string`
 
 https://github.com/facebook/react-native/issues/18291
@@ -423,9 +524,8 @@ https://github.com/facebook/react-native/issues/18291
 
 Ex opcional 3.4
 
-
 O mapeamento precisa retornar a definição de **um** componente, e mapeamos cada foto para um _<Text>_ e um _<Image>_. Envolver os elementos adjacentes por uma _<View>_ resolve o problema.
-    -->
+-->
 
 ---
 
@@ -442,24 +542,28 @@ perfil do usuário que fez a publicação numa espécie de cabeçalho do post. V
 mesma imagem base, mudando apenas as propriedade de estilo:
 
 ```jsx
-
 return (
-      <FlatList style={{ marginTop: 20 }}
-        keyExtractor={item => item.id + ''}
-        data={fotos}
-        renderItem={({ item }) =>
-          <View>
-            <View>
-              <Image source={require('../../resources/img/alura.png')}
-                style={{ width: 40, height: 40 }} />
-              <Text>{item.usuario}</Text>
-            </View>
-            <Image source={require('../../resources/img/alura.png')}
-              style={{ width: width, height: width }} />
-          </View>
-        }
-      />
-    );
+  <FlatList
+    style={{ marginTop: 20 }}
+    keyExtractor={item => item.id + ""}
+    data={fotos}
+    renderItem={({ item }) => (
+      <View>
+        <View>
+          <Image
+            source={require("../../resources/img/alura.png")}
+            style={{ width: 40, height: 40 }}
+          />
+          <Text>{item.usuario}</Text>
+        </View>
+        <Image
+          source={require("../../resources/img/alura.png")}
+          style={{ width: width, height: width }}
+        />
+      </View>
+    )}
+  />
+);
 ```
 
 ---
@@ -472,22 +576,27 @@ https://facebook.github.io/react-native/docs/flexbox
 
 ```jsx
 return (
-      <FlatList style={{ marginTop: 20 }}
-        keyExtractor={item => item.id + ''}
-        data={fotos}
-        renderItem={({ item }) =>
-          <View>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Image source={require('../../resources/img/alura.png')}
-                style={{ width: 40, height: 40 }} />
-              <Text>{item.usuario}</Text>
-            </View>
-            <Image source={require('../../resources/img/alura.png')}
-              style={{ width: width, height: width }} />
-          </View>
-        }
-      />
-    );
+  <FlatList
+    style={{ marginTop: 20 }}
+    keyExtractor={item => item.id + ""}
+    data={fotos}
+    renderItem={({ item }) => (
+      <View>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Image
+            source={require("../../resources/img/alura.png")}
+            style={{ width: 40, height: 40 }}
+          />
+          <Text>{item.usuario}</Text>
+        </View>
+        <Image
+          source={require("../../resources/img/alura.png")}
+          style={{ width: width, height: width }}
+        />
+      </View>
+    )}
+  />
+);
 ```
 
 ---
@@ -498,20 +607,27 @@ Melhorar a exibição da foto de perfil
 
 ```jsx
 return (
-  <FlatList style={{ marginTop: 20 }}
-    keyExtractor={item => item.id + ''}
+  <FlatList
+    style={{ marginTop: 20 }}
+    keyExtractor={item => item.id + ""}
     data={fotos}
-    renderItem={({ item }) =>
+    renderItem={({ item }) => (
       <View>
-        <View style={{ margin: 10, flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={require('../../resources/img/alura.png')}
-            style={{ marginRight: 10, borderRadius: 20, width: 40, height: 40 }} />
+        <View
+          style={{ margin: 10, flexDirection: "row", alignItems: "center" }}
+        >
+          <Image
+            source={require("../../resources/img/alura.png")}
+            style={{ marginRight: 10, borderRadius: 20, width: 40, height: 40 }}
+          />
           <Text>{item.usuario}</Text>
         </View>
-        <Image source={require('../../resources/img/alura.png')}
-          style={{ width: width, height: width }} />
+        <Image
+          source={require("../../resources/img/alura.png")}
+          style={{ width: width, height: width }}
+        />
       </View>
-    }
+    )}
   />
 );
 ```
@@ -528,48 +644,53 @@ Criando stylesheets para isolar o código dos estilos
 export default class Feed extends Component {
   render() {
     const fotos = [
-      { id: 1, usuario: 'rafael' },
-      { id: 2, usuario: 'alberto' },
-      { id: 3, usuario: 'vitor' }
+      { id: 1, usuario: "rafael" },
+      { id: 2, usuario: "alberto" },
+      { id: 3, usuario: "vitor" }
     ];
     return (
-      <FlatList style={styles.container}
-        keyExtractor={item => item.id + ''}
+      <FlatList
+        style={styles.container}
+        keyExtractor={item => item.id + ""}
         data={fotos}
-        renderItem={({ item }) =>
+        renderItem={({ item }) => (
           <View>
             <View style={styles.cabecalho}>
-              <Image source={require('../../resources/img/alura.png')}
-                style={styles.fotoDePerfil} />
+              <Image
+                source={require("../../resources/img/alura.png")}
+                style={styles.fotoDePerfil}
+              />
               <Text>{item.usuario}</Text>
             </View>
-            <Image source={require('../../resources/img/alura.png')}
-              style={styles.foto} />
+            <Image
+              source={require("../../resources/img/alura.png")}
+              style={styles.foto}
+            />
           </View>
-        }
+        )}
       />
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: 20
   },
   cabecalho: {
     margin: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center"
   },
   fotoDePerfil: {
     marginRight: 10,
     borderRadius: 20,
     width: 40,
-    height: 40,
+    height: 40
   },
   foto: {
     width: width,
-    height: width,
-  },
+    height: width
+  }
 });
 ```
 
@@ -589,49 +710,54 @@ Separar melhor nossos componentes na aplicação, criando a classe Post , isolan
 Post.js
 
 ```jsx
-import React, { Component } from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 
-const width = Dimensions.get('screen').width;
+const width = Dimensions.get("screen").width;
 
 export default class Post extends Component {
-    render() {
-        return (
-            <View>
-                <View style={styles.cabecalho}>
-                    <Image source={require('../../resources/img/alura.png')}
-                        style={styles.fotoDePerfil} />
-                    <Text>{item.usuario}</Text>
-                </View>
-                <Image source={require('../../resources/img/alura.png')}
-                    style={styles.foto} />
-            </View>
-        );
-    }
+  render() {
+    return (
+      <View>
+        <View style={styles.cabecalho}>
+          <Image
+            source={require("../../resources/img/alura.png")}
+            style={styles.fotoDePerfil}
+          />
+          <Text>{item.usuario}</Text>
+        </View>
+        <Image
+          source={require("../../resources/img/alura.png")}
+          style={styles.foto}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    cabecalho: {
-        margin: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    fotoDePerfil: {
-        marginRight: 10,
-        borderRadius: 20,
-        width: 40,
-        height: 40,
-    },
-    foto: {
-        width: width,
-        height: width,
-    },
+  cabecalho: {
+    margin: 10,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  fotoDePerfil: {
+    marginRight: 10,
+    borderRadius: 20,
+    width: 40,
+    height: 40
+  },
+  foto: {
+    width: width,
+    height: width
+  }
 });
 ```
 
 Erro: Falta passar 'item' como argumento
 
 ---
+
 4-5
 
 Passando o 'item' como argumento 'foto' para o 'post'
@@ -639,30 +765,35 @@ Passando o 'item' como argumento 'foto' para o 'post'
 https://reactjs.org/docs/components-and-props.html
 
 Feed.js
+
 ```jsx
 return (
-  <FlatList style={styles.container}
-    keyExtractor={item => item.id + ''}
+  <FlatList
+    style={styles.container}
+    keyExtractor={item => item.id + ""}
     data={fotos}
-    renderItem={({ item }) =>
-      <Post foto={item} />
-    }
+    renderItem={({ item }) => <Post foto={item} />}
   />
 );
 ```
 
 Post.js
+
 ```jsx
 return (
-    <View>
-        <View style={styles.cabecalho}>
-            <Image source={require('../../resources/img/alura.png')}
-                style={styles.fotoDePerfil} />
-            <Text>{this.props.foto.usuario}</Text>
-        </View>
-        <Image source={require('../../resources/img/alura.png')}
-            style={styles.foto} />
+  <View>
+    <View style={styles.cabecalho}>
+      <Image
+        source={require("../../resources/img/alura.png")}
+        style={styles.fotoDePerfil}
+      />
+      <Text>{this.props.foto.usuario}</Text>
     </View>
+    <Image
+      source={require("../../resources/img/alura.png")}
+      style={styles.foto}
+    />
+  </View>
 );
 ```
 
@@ -693,16 +824,15 @@ export default class Feed extends Component {
     super();
     this.state = {
       fotos: []
-    }
+    };
   }
   render() {
     return (
-      <FlatList style={styles.container}
+      <FlatList
+        style={styles.container}
         keyExtractor={item => item.id}
         data={this.state.fotos}
-        renderItem={({ item }) =>
-          <Post foto={item} />
-        }
+        renderItem={({ item }) => <Post foto={item} />}
       />
     );
   }
@@ -730,7 +860,7 @@ será feito quando a resposta for recebida. O JSON retornado pela API já conté
 fotos de um usuário, e quando ele for recebido, atualizamos o estado do componente disparando uma
 nova renderização do nosso feed através da chamada ao setState .
 
---- 
+---
 
 4-8
 
@@ -738,19 +868,20 @@ Mas as fotos continuam estáticas e o nome do usuário não aparece
 
 ```jsx
 export default class Post extends Component {
-    render() {
-        return (
-            <View>
-                <View style={styles.cabecalho}>
-                    <Image source={{ uri: this.props.foto.urlPerfil }}
-                        style={styles.fotoDePerfil} />
-                    <Text>{this.props.foto.loginUsuario}</Text>
-                </View>
-                <Image source={{ uri: this.props.foto.urlFoto }}
-                    style={styles.foto} />
-            </View>
-        );
-    }
+  render() {
+    return (
+      <View>
+        <View style={styles.cabecalho}>
+          <Image
+            source={{ uri: this.props.foto.urlPerfil }}
+            style={styles.fotoDePerfil}
+          />
+          <Text>{this.props.foto.loginUsuario}</Text>
+        </View>
+        <Image source={{ uri: this.props.foto.urlFoto }} style={styles.foto} />
+      </View>
+    );
+  }
 }
 ```
 
@@ -788,28 +919,27 @@ Começaremos implementando a funcionalidade de curtir/descurtir fotos.
 - object destructor - http://exploringjs.com/es6/ch_destructuring.html
 
 Post.js
+
 ```jsx
 export default class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            foto: this.props.foto
-        }
-    }
-    render() {
-        const { foto } = this.state;
-        return (
-            <View>
-                <View style={styles.cabecalho}>
-                    <Image source={{ uri: foto.urlPerfil }}
-                        style={styles.fotoDePerfil} />
-                    <Text>{foto.loginUsuario}</Text>
-                </View>
-                <Image source={{ uri: foto.urlFoto }}
-                    style={styles.foto} />
-            </View>
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      foto: this.props.foto
+    };
+  }
+  render() {
+    const { foto } = this.state;
+    return (
+      <View>
+        <View style={styles.cabecalho}>
+          <Image source={{ uri: foto.urlPerfil }} style={styles.fotoDePerfil} />
+          <Text>{foto.loginUsuario}</Text>
+        </View>
+        <Image source={{ uri: foto.urlFoto }} style={styles.foto} />
+      </View>
+    );
+  }
 }
 ```
 
@@ -851,11 +981,17 @@ O botão não é clicável, vamos utilizar o touchable opacity:
 ---
 
 Post.js
+
 ```jsx
 <View style={styles.rodape}>
-    <TouchableOpacity onPress={() => console.warn('Touchable Opacity respondendo!')}>
-        <Image style={styles.botaoDeLike} source={require('../../resources/img/s2.png')} />
-    </TouchableOpacity>
+  <TouchableOpacity
+    onPress={() => console.warn("Touchable Opacity respondendo!")}
+  >
+    <Image
+      style={styles.botaoDeLike}
+      source={require("../../resources/img/s2.png")}
+    />
+  </TouchableOpacity>
 </View>
 ```
 
@@ -867,11 +1003,18 @@ Vamos trocar a imagem do like se a foto estiver likeada
 
 ```jsx
 <View style={styles.rodape}>
-    <TouchableOpacity onPress={() => console.warn('Touchable Opacity respondendo!')}>
-        <Image style={styles.botaoDeLike}
-            source={foto.likeada ? require('../../resources/img/s2-checked.png') :
-                require('../../resources/img/s2.png')} />
-    </TouchableOpacity>
+  <TouchableOpacity
+    onPress={() => console.warn("Touchable Opacity respondendo!")}
+  >
+    <Image
+      style={styles.botaoDeLike}
+      source={
+        foto.likeada
+          ? require("../../resources/img/s2-checked.png")
+          : require("../../resources/img/s2.png")
+      }
+    />
+  </TouchableOpacity>
 </View>
 ```
 
@@ -887,71 +1030,72 @@ Para melhorar o código vamos separar em funções:
 
 ```jsx
 export default class Post extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            foto: this.props.foto
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      foto: this.props.foto
+    };
+  }
 
-    carregaIcone(likeada) {
-        return likeada ? require('../../resources/img/s2-checked.png') :
-            require('../../resources/img/s2.png')
-    }
+  carregaIcone(likeada) {
+    return likeada
+      ? require("../../resources/img/s2-checked.png")
+      : require("../../resources/img/s2.png");
+  }
 
-    like = () => {
-        const fotoAtualizada = {
-            ...this.state.foto,
-            likeada: !this.state.foto.likeada
-        }
-        this.setState({ foto: fotoAtualizada });
-    }
+  like = () => {
+    const fotoAtualizada = {
+      ...this.state.foto,
+      likeada: !this.state.foto.likeada
+    };
+    this.setState({ foto: fotoAtualizada });
+  };
 
-    render() {
-        const { foto } = this.state;
-        return (
-            <View>
-                <View style={styles.cabecalho}>
-                    <Image source={{ uri: foto.urlPerfil }}
-                        style={styles.fotoDePerfil} />
-                    <Text>{foto.loginUsuario}</Text>
-                </View>
-                <Image source={{ uri: foto.urlFoto }}
-                    style={styles.foto} />
-                <View style={styles.rodape}>
-                    <TouchableOpacity onPress={this.like}>
-                        <Image style={styles.botaoDeLike}
-                            source={this.carregaIcone(foto.likeada)} />
-                    </TouchableOpacity>
-                </View>
-            </View>
-        );
-    }
+  render() {
+    const { foto } = this.state;
+    return (
+      <View>
+        <View style={styles.cabecalho}>
+          <Image source={{ uri: foto.urlPerfil }} style={styles.fotoDePerfil} />
+          <Text>{foto.loginUsuario}</Text>
+        </View>
+        <Image source={{ uri: foto.urlFoto }} style={styles.foto} />
+        <View style={styles.rodape}>
+          <TouchableOpacity onPress={this.like}>
+            <Image
+              style={styles.botaoDeLike}
+              source={this.carregaIcone(foto.likeada)}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    cabecalho: {
-        margin: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    fotoDePerfil: {
-        marginRight: 10,
-        borderRadius: 20,
-        width: 40,
-        height: 40,
-    },
-    foto: {
-        width: width,
-        height: width,
-    },
-    rodape: {
-        margin: 10,
-    },
-    botaoDeLike: {
-        height: 40,
-        width: 40,
-    },
+  cabecalho: {
+    margin: 10,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  fotoDePerfil: {
+    marginRight: 10,
+    borderRadius: 20,
+    width: 40,
+    height: 40
+  },
+  foto: {
+    width: width,
+    height: width
+  },
+  rodape: {
+    margin: 10
+  },
+  botaoDeLike: {
+    height: 40,
+    width: 40
+  }
 });
 ```
 
@@ -972,9 +1116,10 @@ ex5-5
 Pegando a qtd de likes da api
 
 ex5-6
+
 ```jsx
 <Text style={styles.likes}>
-    {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
+  {foto.likers.length} {foto.likers.length > 1 ? "curtidas" : "curtida"}
 </Text>
 ```
 
@@ -983,11 +1128,12 @@ ex5-6
 Exibição condicional de componente de curtidas só de já houver curtida
 
 ```jsx
-{foto.likers.length > 0 ?
+{
+  foto.likers.length > 0 ? (
     <Text style={styles.likes}>
-        {foto.likers.length} {foto.likers.length > 1 ? 'curtidas' : 'curtida'}
-    </Text> :
-    null
+      {foto.likers.length} {foto.likers.length > 1 ? "curtidas" : "curtida"}
+    </Text>
+  ) : null;
 }
 ```
 
@@ -1039,8 +1185,8 @@ Exibindo a legenda da foto
 
 ```jsx
 <View style={styles.comentario}>
-    <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
-    <Text>{foto.comentario}</Text>
+  <Text style={styles.tituloComentario}>{foto.loginUsuario}</Text>
+  <Text>{foto.comentario}</Text>
 </View>
 ```
 
@@ -1057,21 +1203,21 @@ filtrando a lista para retirar o nome do usuário atual da lista de likes
 
 ```jsx
 like = () => {
-    let novaLista = [];
-    if (!this.state.foto.likeada) {
-        novaLista = this.state.foto.likers.concat({ login: 'meuUsuario' });
-    } else {
-        novaLista = this.state.foto.likers.filter(liker => {
-            return liker.login !== 'meuUsuario'
-        });
-    }
-    const fotoAtualizada = {
-        ...this.state.foto,
-        likeada: !this.state.foto.likeada,
-        likers: novaLista
-    }
-    this.setState({ foto: fotoAtualizada });
-}
+  let novaLista = [];
+  if (!this.state.foto.likeada) {
+    novaLista = this.state.foto.likers.concat({ login: "meuUsuario" });
+  } else {
+    novaLista = this.state.foto.likers.filter(liker => {
+      return liker.login !== "meuUsuario";
+    });
+  }
+  const fotoAtualizada = {
+    ...this.state.foto,
+    likeada: !this.state.foto.likeada,
+    likers: novaLista
+  };
+  this.setState({ foto: fotoAtualizada });
+};
 ```
 
 ---
@@ -1082,25 +1228,22 @@ Organizando o código:
 
 ```jsx
 like = () => {
-    const { foto } = this.state;
-    let novaLista = [];
-    if (!foto.likeada) {
-        novaLista = [
-            ...foto.likers,
-            { login: 'meuUsuario' }
-        ];
-    } else {
-        novaLista = foto.likers.filter(liker => {
-            return liker.login !== 'meuUsuario'
-        });
-    }
-    const fotoAtualizada = {
-        ...foto,
-        likeada: !foto.likeada,
-        likers: novaLista
-    }
-    this.setState({ foto: fotoAtualizada });
-}
+  const { foto } = this.state;
+  let novaLista = [];
+  if (!foto.likeada) {
+    novaLista = [...foto.likers, { login: "meuUsuario" }];
+  } else {
+    novaLista = foto.likers.filter(liker => {
+      return liker.login !== "meuUsuario";
+    });
+  }
+  const fotoAtualizada = {
+    ...foto,
+    likeada: !foto.likeada,
+    likers: novaLista
+  };
+  this.setState({ foto: fotoAtualizada });
+};
 ```
 
 ---
@@ -1113,14 +1256,15 @@ O código funciona porque no JavaScript `true && expression` sempre resulta na e
 ---
 
 # CAPÍTULO 6 - ADICIONANDO NOVOS COMENTÁRIOS A UMA FOTO
+
 ## 6.1 EXIBINDO OS COMENTÁRIOS
 
 ---
 
 6-1
 
-criar um comentário fixo: 
-    this.props.foto.comentarios = [{id: '78787',texto: 'um comentário', login: 'um usuário'}];
+criar um comentário fixo:
+this.props.foto.comentarios = [{id: '78787',texto: 'um comentário', login: 'um usuário'}];
 
 Exibindo os comentários já existentes
 
@@ -1159,13 +1303,16 @@ render() {
 6-2
 
 Criar chave para cada elemento:
+
 ```jsx
-{foto.comentarios.map(comentario =>
+{
+  foto.comentarios.map(comentario => (
     <View key={comentario.id}>
-        <Text>{comentario.login}</Text>
-        <Text>{comentario.texto}</Text>
+      <Text>{comentario.login}</Text>
+      <Text>{comentario.texto}</Text>
     </View>
-)}
+  ));
+}
 ```
 
 cap 6.0
@@ -1173,12 +1320,14 @@ cap 6.0
 Adicionando estilos:
 
 ```jsx
-{foto.comentarios.map(comentario =>
-<View style={styles.comentario} key={comentario.id}>
-<Text style={styles.tituloComentario}>{comentario.login}</Text>
-<Text>{comentario.texto}</Text>
-</View>
-)}
+{
+  foto.comentarios.map(comentario => (
+    <View style={styles.comentario} key={comentario.id}>
+      <Text style={styles.tituloComentario}>{comentario.login}</Text>
+      <Text>{comentario.texto}</Text>
+    </View>
+  ));
+}
 ```
 
 ---
@@ -1250,7 +1399,7 @@ https://facebook.github.io/react-native/docs/platform-specific-code
 - mas o código abaixo está errado pq executa a função no momento do bind:
 
 <TouchableOpacity onPress={
-    this.props.comentarioCallback(this.state.valorComentario, this.inputComentario)
+this.props.comentarioCallback(this.state.valorComentario, this.inputComentario)
 }>
 
 - Devemos converter em uma arrow function
@@ -1264,7 +1413,7 @@ Component, relembrando dos conceitos apresentados no curso de React.
 ## 7.3 IDENTIFICANDO MAIS PRESENTATIONAL COMPONENTS
 
 - O próximo componente a ser refatorado é o de Post, primeiro extrairemos um componente de Likes
-<codigo>
+  <codigo>
 
 ## 7.4 EXERCÍCIOS: DIVIDINDO CONTAINER E PRESENTATIONAL COMPONENTS
 
@@ -1277,11 +1426,10 @@ O estado está sendo atualizado apenas nos componentes inferiores
 Passar a lógica do Post para o Feed - Single Source of Truth
 
 ## 8.1 TRANSFERINDO A LÓGICA DE COMENTÁRIOS PARA O CONTAINER COMPONENT
+
 bar ]
 
-
 foo bar
-
 
 revisao dia 5
 Criando Tela de login
@@ -1296,12 +1444,12 @@ Remoção do usuário fixo
 Nova listagem das fotos autenticada
 Like autenticado
 
-
 revisao dia 7
 Comentário autenticado
 Isolando api em alurafetchservice
 Notificação Android/IOS
 Revertendo o estado em caso de falha de comunicação
+
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTE4NDc2MzMzNjIsLTIwNDY5Mzg5NzcsMT
 kzODM1NTYzMCwtMTk5NjAwMzE3NiwtMTk1MjcwOTY5MywtOTIy
