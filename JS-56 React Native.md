@@ -31,16 +31,13 @@
 
 - Java
 
-```bash
-export JAVA_HOME=/kdi/jdk1.8.0_181
-export PATH=$PATH:/kdi/jdk1.8.0_181/bin
-```
-
 ### Variáveis de ambiente
 
 `$HOME/.bash_profile`
 
 ```bash
+export JAVA_HOME=/kdi/jdk1.8.0_181
+export PATH=$PATH:/kdi/jdk1.8.0_181/bin
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -91,7 +88,7 @@ gradlew.bat clean
 
 #### ENOSPC
 
-https://github.com/facebook/jest/issues/3254
+<https://github.com/facebook/jest/issues/3254>
 
 ```bash
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -99,7 +96,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 #### KVM
 
-http://nmp90.com/2018/04/dev-kvm-permission-denied-ubuntu-18-04/
+<http://nmp90.com/2018/04/dev-kvm-permission-denied-ubuntu-18-04/>
 
 ```bash
 sudo apt install qemu-kvm
@@ -108,26 +105,19 @@ sudo adduser $USER kvm
 
 ---
 
-### Teste do ambiente
+### Teste do ambiente - Olá Mundo
 
-- Android studio com app hello world e rodando no emulador
-- react native cli rodando no emulador
+```bash
+> react-native init OlaMundo
+> emulator -avd Nexus_5_API_28
+> cd OlaMundo
+> react-native start
+> react-native run-android
+```
 
-# Dia 1
+## Dia 1
 
-Recursos:
-
-https://s3.amazonaws.com/caelum-online-public/636-react-native-1/resources.zip
-
-## http://bit.ly/js56rn
-
-# Cap 0 - O que é React e React Native
-
----
-
-# Facebook
-
-# Origem
+### Introdução - O que é React e React Native
 
 - Interfaces visuais complexas
 - Necessidade de atualizar a view
@@ -158,70 +148,47 @@ https://s3.amazonaws.com/caelum-online-public/636-react-native-1/resources.zip
 - Reimplementação do flexbox
 - ES6
 
----
-
-# Cap 0 - O que é React e React Native
-
----
-
-# Facebook
-
-# React
-
 React (também conhecido como React.js ou ReactJS) é uma biblioteca JavaScript para criar interfaces com o usuário. É mantida pelo Facebook e por uma comunidade de desenvolvedores e empresas individuais.
 
 O React pode ser usado como base no desenvolvimento de aplicativos SPAs ou móveis.
 
----
-
-# História
+### História
 
 O React foi criado no Facebook. Ele foi influenciado pelo XHP, uma estrutura de componentes HTML para PHP. Ele foi usado pela primeira vez no feed de notícias do Facebook em 2011 e, mais tarde, no Instagram.com em 2012. O código foi aberto em maio de 2013.
 
 O React Native, que permite o desenvolvimento nativo de Android e iOS com o React, foi anunciado no conferência de React.js do Facebook em fevereiro de 2015 e de código aberto em março de 2015.
 
----
-
-## Declarative
+### Declarative
 
 Reaja facilita criar UIs interativas. Crie views simples para cada estado em seu aplicativo e o React atualizará e renderizará com eficiência os componentes corretos quando os dados forem alterados.
 
 As views declarativas tornam seu código mais previsível e mais fácil de depurar.
 
----
-
-## Component-Based
+### Component-Based
 
 Crie componentes encapsulados que gerenciam seu próprio estado e, em seguida, componha-os para criar interfaces de usuário complexas.
 
 Como a lógica do componente é escrita em JavaScript em vez de modelos, você pode facilmente passar dados avançados por meio do seu aplicativo e manter o estado fora do DOM.
 
----
-
-# React Native
+### React Native
 
 - Crie aplicativos móveis nativos usando JavaScript e React
+
   - O React Native permite que você crie aplicativos móveis usando apenas JavaScript.
   - Ele usa o mesmo design que o React, permitindo compor uma rica interface de usuário móvel a partir de componentes declarativos.
-
----
 
 - Um aplicativo React Native é um aplicativo móvel real
   - Com o React Native, você não cria um "aplicativo da Web para dispositivos móveis", um "aplicativo HTML5" ou um "aplicativo híbrido". Você cria um aplicativo móvel real que é indistinguível de um aplicativo criado usando o Objective-C ou o Java. O React Native usa os mesmos blocos de construção fundamentais da interface do usuário dos aplicativos iOS e Android comuns. Você apenas colocaos blocos de construção juntos usando JavaScript e React
 
----
+### Híbrido vs Nativo
 
-# Híbrido vs Nativo
+### Diagrama
 
-# Diagrama
-
-![](https://i.imgur.com/QWejiTb.png)
+![Diagrama](https://i.imgur.com/QWejiTb.png)
 
 - O código da regra de negócio em JS é o mesmo para qualquer plataforma
 
----
-
-# Hello World!
+### Hello World
 
 ```jsx
 import React, { Component } from "react";
@@ -241,8 +208,6 @@ AppRegistry.registerComponent("HelloWorld", () => HelloWorldApp);
 
 import HelloWorldApp from "./HelloWorldApp";
 ```
-
----
 
 # Cap 1 - PREPARANDO O AMBIENTE
 
@@ -333,24 +298,27 @@ Pra executar em um IOS só se vc tiver um MAC, a única outra opção é usando 
 
 2.1 CRIANDO O PROJETO E CONHECENDO O PRIMEIRO CÓDIGO
 
+````bash
 > react-native init InstaluraMobile
-
 > cd InstaluraMobile/ && react-native start
-
 > react-native run-android
+```
 
 Abrir no vscode e navegar pela estrutura do projeto
 
----
+Recursos:
 
-https://gist.github.com/tiagolpadua/6d1003b2f3930b5487bff4c1c1975ee0
-http://bit.ly/js-56-plugins
+<https://s3.amazonaws.com/caelum-online-public/636-react-native-1/resources.zip>
+<http://bit.ly/js56rn>
+
+<https://gist.github.com/tiagolpadua/6d1003b2f3930b5487bff4c1c1975ee0>
+<http://bit.ly/js-56-plugins>
 
 - Instalar o eslint e o prettier no projeto:
 
 ```bash
 npm install eslint babel-eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier
-```
+````
 
 - Criar o arquivo `.eslintrc` na raiz do projeto
 
