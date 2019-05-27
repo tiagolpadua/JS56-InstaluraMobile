@@ -1,59 +1,54 @@
 # JS-56 React Native
 
-# Cronograma
+## Cronograma
 
-Desestruturação de objetos
+- Dia 1: Capítulo 1
+- Dia 2: Capítulo 2, 3 e 4
+- Dia 3: Capítulo 5 e 6
+- Dia 4: Capítulo 7
+- Dia 5: Capítulo 8 e 9
+- Dia 6: Capítulo 10 e 11
+- Dia 7: Capítulo 12
+- Dia 8: Capítulo 13 e 14
 
-http://bit.ly/jsdestruc
+## Montagem de Ambiente
 
-React Native Life Cicle
+- Node / NPM
 
-http://bit.ly/js56-rls
+```bash
+> node --version
+> npm --version
+```
 
-## Dia 1:
+- Android Studio com Emulador
 
-Capítulo 1
+- React Native CLI
 
-## Dia 2:
+```bash
+> npm install -g react-native-cli
+> react-native --version
+```
 
-Capítulo 2, 3 e 4
-
-## Dia 3:
-
-Capítulo 5 e 6
-
-## Dia 4:
-
-Capítulo 7
-
-## Dia 5:
-
-Capítulo 8 e 9
-
-## Dia 6:
-
-Capítulo 10 e 11
-
-## Dia 7:
-
-Capítulo 12
-
-## Dia 8:
-
-Capítulo 13 e 14
-
-# Variáveis de ambiente
+- Java
 
 ```bash
 export JAVA_HOME=/kdi/jdk1.8.0_181
 export PATH=$PATH:/kdi/jdk1.8.0_181/bin
-export PATH=$PATH:/kdi/jdk1.8.0_181/bin
-export PATH=$PATH:~/Android/Sdk/platform-tools
-export PATH=$PATH:~/Android/Sdk/emulator
-export ANDROID_HOME=~/Android/Sdk
 ```
 
-# Emulador via linha de comando
+### Variáveis de ambiente
+
+`$HOME/.bash_profile`
+
+```bash
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+```
+
+### Emulador via linha de comando
 
 ```bash
 emulator -list-avds
@@ -62,9 +57,9 @@ emulator -avd Nexus_5X_API_28 -no-snapshot-load
 emulator -avd Nexus_5X_API_28 -no-snapshot-load -gpu guest
 ```
 
-# adb via linha de comando
+### adb via linha de comando
 
-https://devhints.io/adb
+<https://devhints.io/adb>
 
 ```bash
 adb devices -l
@@ -72,7 +67,13 @@ adb logcat
 adb shell input text "RR" # Recarrega a tela do celular físico
 ```
 
-# react-native
+### EXPO vs React Native CLI
+
+Se você estiver vindo de um plano de fundo da Web, a maneira mais fácil de começar a usar o React Native é com as ferramentas Expo, pois elas permitem que você inicie um projeto sem instalar e configurar o Xcode ou o Android Studio. O Expo CLI configura um ambiente de desenvolvimento em sua máquina local e você pode criar um aplicativo React Native em minutos. Para um desenvolvimento instantâneo, você pode usar o Snack para experimentar React Native out diretamente no seu navegador.
+
+Se você estiver familiarizado com o desenvolvimento nativo, provavelmente desejará usar o React Native CLI. Requer o Xcode ou o Android Studio para começar. Se você já tiver uma dessas ferramentas instaladas, poderá colocá-la em funcionamento em alguns minutos. Se eles não estiverem instalados, você deve esperar gastar cerca de uma hora instalando e configurando-os.
+
+### react-native
 
 ```bash
 react-native init <Projeto>
@@ -81,14 +82,14 @@ react-native run-android
 react-native run-android --deviceId=DEVICE_ID
 ```
 
-# Troubleshotting
+### Troubleshotting
 
 ```bash
 cd android
 gradlew.bat clean
 ```
 
-## ENOSPC
+#### ENOSPC
 
 https://github.com/facebook/jest/issues/3254
 
@@ -96,7 +97,7 @@ https://github.com/facebook/jest/issues/3254
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
-## KVM
+#### KVM
 
 http://nmp90.com/2018/04/dev-kvm-permission-denied-ubuntu-18-04/
 
@@ -107,12 +108,10 @@ sudo adduser $USER kvm
 
 ---
 
-# Teste do ambiente
+### Teste do ambiente
 
 - Android studio com app hello world e rodando no emulador
 - react native cli rodando no emulador
-
----
 
 # Dia 1
 
@@ -1458,3 +1457,27 @@ gsLTE0OTk3OTM5MzUsLTMzNTgzNTExOCwtOTU4MTUwMjYyLDEy
 NTMzODg3ODEsLTEzMDgwNjQ1MzcsLTEwOTAzNTIxNzIsNTM3NT
 kwMTg5LC0yMTM4NzQ1NzM2LDEyMjkwMjYyM119
 -->
+
+Mario Souto (Soutinho) [10:30 PM]
+Opa única coisa que deu ruim no cursp
+Foi a lib de navegação
+A gente trocou pra usar a React Navigation
+https://github.com/CaelumAulas/rn-android8039
+
+Tiago Lage Payne de Pádua [10:31 PM]
+blz, lembrei agora q tinha isso msm vlw
+
+Mario Souto (Soutinho) [10:31 PM]
+Pode pegar o codigo aqui /o
+E o AsyncStorage
+Vc precisa instalar
+
+\$ react-native log-android
+
+Desestruturação de objetos
+
+<http://bit.ly/jsdestruc>
+
+React Native Life Cicle
+
+<http://bit.ly/js56-rls>
