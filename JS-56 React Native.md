@@ -209,7 +209,7 @@ AppRegistry.registerComponent("HelloWorld", () => HelloWorldApp);
 import HelloWorldApp from "./HelloWorldApp";
 ```
 
-# Cap 1 - PREPARANDO O AMBIENTE
+## Cap 1 - PREPARANDO O AMBIENTE
 
 ---
 
@@ -217,14 +217,18 @@ Explicar e testar cada um dos elementos
 
 - Node/NPM para compilar o JSX
 
-  > node --version
-  > npm --version
+```bash
+> node --version
+> npm --version
+```
 
 - Watchman para observar os arquivos (não precisa no Linux)
 
 - React Native CLI
 
+```bash
 > react-native --version
+```
 
 - IOS
 
@@ -253,11 +257,9 @@ emulator -avd Nexus_5X_API_28
 
 - Conectar o próprio celular
 
----
-
 ### Modo de depuração USB
 
-https://www.androidpit.com.br/como-ativar-depuracao-usb-android
+<https://www.androidpit.com.br/como-ativar-depuracao-usb-android>
 
 A opção de depuração USB permite a comunicação avançada com um dispositivo. Ao conectá-lo ao PC, podemos utilizar programas que vão interagir em profundidade com o computador, permitindo-nos instalar aplicativos, ler informações do sistema e habilitar as permissões de root.
 
@@ -267,7 +269,7 @@ Aqui é onde entra a opção de depuração USB. Com ela podemos conectar o smar
 
 A depuração USB está destinada a conectar e compartilhar informações entre um smartphone e um computador. As ferramentas usadas para isso é o ADB (Android Debug Bridge) para a maioria dos smartphones, ou programas específicos segundo a fabricante, como por exemplo o Odin para os dispositivos da Samsung.
 
-https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2014/10/como-ativar-o-modo-desenvolvedor-no-android.html
+<https://www.techtudo.com.br/dicas-e-tutoriais/noticia/2014/10/como-ativar-o-modo-desenvolvedor-no-android.html>
 
 Passo 1. Acesse as configurações do Android, deslize a tela até o fim e toque em "Sobre o dispositivo".
 
@@ -284,17 +286,11 @@ CTRL+M para ativar o Live Reload
 
 Explicar a diferença de Live Reload e Hot Reload
 
----
-
-# E pra rodar no IOS?
+### E pra rodar no IOS?
 
 Pra executar em um IOS só se vc tiver um MAC, a única outra opção é usando o app expo se a aplicação for desenvolvida usando o create-react-native-app, mas isso é outra história...
 
----
-
-# Capítulo 2
-
----
+## Capítulo 2
 
 2.1 CRIANDO O PROJETO E CONHECENDO O PRIMEIRO CÓDIGO
 
@@ -322,7 +318,7 @@ npm install eslint babel-eslint eslint-config-airbnb eslint-config-prettier esli
 
 - Criar o arquivo `.eslintrc` na raiz do projeto
 
-```
+```json
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
@@ -355,7 +351,7 @@ npm install eslint babel-eslint eslint-config-airbnb eslint-config-prettier esli
 
 - Criar o arquivo `.editorconfig`:
 
-```
+```prop
 root = true
 [*]
 charset = utf-8
@@ -372,7 +368,7 @@ trim_trailing_whitespace = true
 
 File -> Prefferences -> Settings -> Folder Settings -> {}
 
-```
+```prop
 "settings": {
   // other settings
   // formatting using eslint
@@ -409,14 +405,10 @@ AppRegistry.registerComponent("InstaluraMobile", () => App);
 
 ## CONSTRUINDO O FEED DO INSTALURA
 
----
-
 - Começar a construir o feed
 - Apresentar uma xxx
 
 foto e o nome do usuário que a publicou na app
-
----
 
 ```jsx
 import React, { Component } from "react";
@@ -448,13 +440,9 @@ export default class Feed extends Component {
 }
 ```
 
----
-
 - Image https://facebook.github.io/react-native/docs/images
 - Dimensions https://facebook.github.io/react-native/docs/dimensions
 - map
-
----
 
 Scroll não funciona...
 
@@ -462,9 +450,7 @@ View -> ScrollView
 
 Debate ScrollView vs Flatlist
 
----
-
-Trocar map por flatlist - https://facebook.github.io/react-native/docs/flatlist
+Trocar map por flatlist - <https://facebook.github.io/react-native/docs/flatlist>
 
 ```jsx
 <FlatList
@@ -496,11 +482,9 @@ O mapeamento precisa retornar a definição de **um** componente, e mapeamos cad
 
 ---
 
-# Capítulo 4
+## Capítulo 4
 
-## 4.1 MELHORANDO O LAYOUT DOS POSTS
-
----
+### 4.1 MELHORANDO O LAYOUT DOS POSTS
 
 4-0
 
