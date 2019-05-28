@@ -33,11 +33,24 @@
 
 ### Variáveis de ambiente
 
-`$HOME/.bash_profile`
+- Linux / macOS
+
+Editar o arquivo: `$HOME/.bash_profile`
+
+Por exemplo:
 
 ```bash
-export JAVA_HOME=/kdi/jdk1.8.0_181
-export PATH=$PATH:/kdi/jdk1.8.0_181/bin
+# macOS
+> open -t ~/.bash_profile
+# Linux
+> gedit ~/.bash_profile
+```
+
+Incluir as linhas abaixo ajustando para o seu SO:
+
+```bash
+export JAVA_HOME=/<caminho-do-seu-computador>/jdk1.8.0_181
+export PATH=$PATH:/<caminho-do-seu-computador>/jdk1.8.0_181/bin
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -63,12 +76,6 @@ adb devices -l
 adb logcat
 adb shell input text "RR" # Recarrega a tela do celular físico
 ```
-
-### EXPO vs React Native CLI
-
-Se você estiver vindo de um plano de fundo da Web, a maneira mais fácil de começar a usar o React Native é com as ferramentas Expo, pois elas permitem que você inicie um projeto sem instalar e configurar o Xcode ou o Android Studio. O Expo CLI configura um ambiente de desenvolvimento em sua máquina local e você pode criar um aplicativo React Native em minutos. Para um desenvolvimento instantâneo, você pode usar o Snack para experimentar React Native out diretamente no seu navegador.
-
-Se você estiver familiarizado com o desenvolvimento nativo, provavelmente desejará usar o React Native CLI. Requer o Xcode ou o Android Studio para começar. Se você já tiver uma dessas ferramentas instaladas, poderá colocá-la em funcionamento em alguns minutos. Se eles não estiverem instalados, você deve esperar gastar cerca de uma hora instalando e configurando-os.
 
 ### react-native
 
@@ -102,8 +109,6 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 sudo apt install qemu-kvm
 sudo adduser $USER kvm
 ```
-
----
 
 ### Teste do ambiente - Olá Mundo
 
@@ -188,6 +193,12 @@ Como a lógica do componente é escrita em JavaScript em vez de modelos, você p
 
 - O código da regra de negócio em JS é o mesmo para qualquer plataforma
 
+### EXPO vs React Native CLI
+
+Se você estiver vindo de um plano de fundo da Web, a maneira mais fácil de começar a usar o React Native é com as ferramentas Expo, pois elas permitem que você inicie um projeto sem instalar e configurar o Xcode ou o Android Studio. O Expo CLI configura um ambiente de desenvolvimento em sua máquina local e você pode criar um aplicativo React Native em minutos. Para um desenvolvimento instantâneo, você pode usar o Snack para experimentar React Native out diretamente no seu navegador.
+
+Se você estiver familiarizado com o desenvolvimento nativo, provavelmente desejará usar o React Native CLI. Requer o Xcode ou o Android Studio para começar. Se você já tiver uma dessas ferramentas instaladas, poderá colocá-la em funcionamento em alguns minutos. Se eles não estiverem instalados, você deve esperar gastar cerca de uma hora instalando e configurando-os.
+
 ### Hello World
 
 ```jsx
@@ -210,8 +221,6 @@ import HelloWorldApp from "./HelloWorldApp";
 ```
 
 ## Cap 1 - PREPARANDO O AMBIENTE
-
----
 
 Explicar e testar cada um dos elementos
 
@@ -240,8 +249,8 @@ Explicar e testar cada um dos elementos
   - Android Studio + Android SDK
   - Emulador Android
 
-- Create React App -> https://github.com/react-community/create-react-native-app/issues/516
-  https://facebook.github.io/react-native/blog/2017/03/13/introducing-create-react-native-app
+- Create React App -> <https://github.com/react-community/create-react-native-app/issues/516>
+  <https://facebook.github.io/react-native/blog/2017/03/13/introducing-create-react-native-app>
 
 Exercícios:
 
@@ -307,10 +316,11 @@ Recursos:
 <https://s3.amazonaws.com/caelum-online-public/636-react-native-1/resources.zip>
 <http://bit.ly/js56rn>
 
+- Instalar o eslint e o prettier no projeto:
+
 <https://gist.github.com/tiagolpadua/6d1003b2f3930b5487bff4c1c1975ee0>
 <http://bit.ly/js-56-plugins>
 
-- Instalar o eslint e o prettier no projeto:
 
 ```bash
 npm install eslint babel-eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier
@@ -389,9 +399,9 @@ File -> Prefferences -> Settings -> Folder Settings -> {}
 
 ## Exercício 2.3
 
-3. Menu do desenvolvedor em dispositivo físico: Balançar o telefone, emulador é CTRL+M
+- 3 Menu do desenvolvedor em dispositivo físico: Balançar o telefone, emulador é CTRL+M
 
-4. Faltou registrar o componente:
+- 4 Faltou registrar o componente:
 
 ```js
 AppRegistry.registerComponent("InstaluraMobile", () => App);
@@ -401,14 +411,12 @@ AppRegistry.registerComponent("InstaluraMobile", () => App);
 
 ---
 
-# Capítulo 3
+## Capítulo 3
 
-## CONSTRUINDO O FEED DO INSTALURA
+### CONSTRUINDO O FEED DO INSTALURA
 
 - Começar a construir o feed
-- Apresentar uma xxx
-
-foto e o nome do usuário que a publicou na app
+- Apresentar uma foto e o nome do usuário que a publicou na app
 
 ```jsx
 import React, { Component } from "react";
@@ -440,8 +448,8 @@ export default class Feed extends Component {
 }
 ```
 
-- Image https://facebook.github.io/react-native/docs/images
-- Dimensions https://facebook.github.io/react-native/docs/dimensions
+- Image <https://facebook.github.io/react-native/docs/images>
+- Dimensions <https://facebook.github.io/react-native/docs/dimensions>
 - map
 
 Scroll não funciona...
@@ -473,14 +481,9 @@ Failed child context type: Invalid child context `virtualizedCell.cellKey` of ty
 
 https://github.com/facebook/react-native/issues/18291
 
----
-
 Ex opcional 3.4
 
-O mapeamento precisa retornar a definição de **um** componente, e mapeamos cada foto para um _<Text>_ e um _<Image>_. Envolver os elementos adjacentes por uma _<View>_ resolve o problema.
--->
-
----
+O mapeamento precisa retornar a definição de **um** componente, e mapeamos cada foto para um `_<Text>_` e um `_<Image>_`. Envolver os elementos adjacentes por uma `_<View>_` resolve o problema.
 
 ## Capítulo 4
 
@@ -517,13 +520,11 @@ return (
 );
 ```
 
----
-
 4-1
 
 Ajustar a direção do texto:
 
-https://facebook.github.io/react-native/docs/flexbox
+<https://facebook.github.io/react-native/docs/flexbox>
 
 ```jsx
 return (
@@ -549,8 +550,6 @@ return (
   />
 );
 ```
-
----
 
 4-2
 
@@ -583,13 +582,9 @@ return (
 );
 ```
 
----
-
 4-3
 
 Criando stylesheets para isolar o código dos estilos
-
----
 
 ```jsx
 export default class Feed extends Component {
@@ -645,18 +640,12 @@ const styles = StyleSheet.create({
 });
 ```
 
----
-
 4.2 ESCREVENDO NOSSOS PRÓPRIOS COMPONENTES
-
----
 
 Já começamos a pensar no layout e estilo da nossa aplicação. Agora é hora de pensar na divisão do
 nosso código.
 
 Separar melhor nossos componentes na aplicação, criando a classe Post , isolando essa complexidade a mais em um componente específico e reutilizável.
-
----
 
 Post.js
 
@@ -707,13 +696,11 @@ const styles = StyleSheet.create({
 
 Erro: Falta passar 'item' como argumento
 
----
-
 4-5
 
 Passando o 'item' como argumento 'foto' para o 'post'
 
-https://reactjs.org/docs/components-and-props.html
+<https://reactjs.org/docs/components-and-props.html>
 
 Feed.js
 
@@ -748,26 +735,20 @@ return (
 );
 ```
 
----
-
 Dividir a app em componentes mais simples e com pequenas responsabilidades é palavra de ordem,
 principalmente usando React, que já nos traz muita facilidades para isso. Nesse ponto já
 conseguimos perceber como cada componente fica mais legível, com complexidade reduzida e
 como ganhamos possibilidades de reutilização dos mesmos.
 
----
-
 4.3 INTEGRANDO COM A API DO INSTALURA
 
 Passando de dados fixos para acesso a uma API
 
-https://instalura-api.herokuapp.com/api/public/fotos/rafael
-
----
+<https://instalura-api.herokuapp.com/api/public/fotos/rafael>
 
 4-6
 
-https://reactjs.org/docs/state-and-lifecycle.html
+<https://reactjs.org/docs/state-and-lifecycle.html>
 
 ```jsx
 export default class Feed extends Component {
@@ -792,8 +773,6 @@ export default class Feed extends Component {
 
 Mas agora a lista aparece vazia
 
----
-
 Carregando a lista através de uma API
 
 4-7
@@ -810,8 +789,6 @@ Aqui usamos a Fetch API do JavaScript para disparar nossa requisição e planeja
 será feito quando a resposta for recebida. O JSON retornado pela API já contém uma lista de todas as
 fotos de um usuário, e quando ele for recebido, atualizamos o estado do componente disparando uma
 nova renderização do nosso feed através da chamada ao setState .
-
----
 
 4-8
 
@@ -836,8 +813,6 @@ export default class Post extends Component {
 }
 ```
 
----
-
 4.4 EXERCÍCIOS: ESTILOS, COMPONENTES CUSTOMIZADOS E INTEGRAÇÃO COM A API
 
 Exercicio opcional 8
@@ -846,23 +821,13 @@ Exercicio opcional 8
 <Text style={[styles.titulo, styles.tituloAtivo]}>{titulo}</Text>
 ```
 
----
+<https://blog.rocketseat.com.br/react-do-zero-ciclo-de-vida-stateless-components-e-arquitetura-flux/>
 
-https://blog.rocketseat.com.br/react-do-zero-ciclo-de-vida-stateless-components-e-arquitetura-flux/
+## Cap 5 - CURTINDO E DESCURTINDO FOTOS NO FEED
 
----
-
-# Cap 5 - CURTINDO E DESCURTINDO FOTOS NO FEED
-
----
-
-## 5.1 COMEÇANDO COM A IMPLEMENTAÇÃO DAS CURTIDAS]
-
----
+### 5.1 COMEÇANDO COM A IMPLEMENTAÇÃO DAS CURTIDAS]
 
 Começaremos implementando a funcionalidade de curtir/descurtir fotos.
-
----
 
 5-0
 
@@ -894,11 +859,7 @@ export default class Post extends Component {
 }
 ```
 
----
-
 - Incluir o botão de curtir/descurtir
-
----
 
 5-1
 
@@ -923,13 +884,9 @@ render() {
     );
 ```
 
----
-
 5-2
 
 O botão não é clicável, vamos utilizar o touchable opacity:
-
----
 
 Post.js
 
@@ -945,8 +902,6 @@ Post.js
   </TouchableOpacity>
 </View>
 ```
-
----
 
 5-3
 
@@ -970,8 +925,6 @@ Vamos trocar a imagem do like se a foto estiver likeada
 ```
 
 mas ainda não há o efeito desejado
-
----
 
 5-4
 
@@ -1050,9 +1003,7 @@ const styles = StyleSheet.create({
 });
 ```
 
----
-
-# 5.2 EXIBINDO CONTEÚDO CONDICIONALMENTE
+### 5.2 EXIBINDO CONTEÚDO CONDICIONALMENTE
 
 Implementaremos o número de curtidas de cada foto, inicialmente fixo
 
@@ -1061,8 +1012,6 @@ ex5-5
 ```jsx
 <Text style={styles.likes}>2 curtidas</Text>
 ```
-
----
 
 Pegando a qtd de likes da api
 
@@ -1073,8 +1022,6 @@ ex5-6
   {foto.likers.length} {foto.likers.length > 1 ? "curtidas" : "curtida"}
 </Text>
 ```
-
----
 
 Exibição condicional de componente de curtidas só de já houver curtida
 
@@ -1087,8 +1034,6 @@ Exibição condicional de componente de curtidas só de já houver curtida
   ) : null;
 }
 ```
-
----
 
 5-7
 
@@ -1128,8 +1073,6 @@ render() {
 }
 ```
 
----
-
 5-8
 
 Exibindo a legenda da foto
@@ -1141,13 +1084,9 @@ Exibindo a legenda da foto
 </View>
 ```
 
----
-
 5.3 ALTERANDO O NÚMERO DE CURTIDAS DINAMICAMENTE
 
 ???
-
----
 
 5-9
 filtrando a lista para retirar o nome do usuário atual da lista de likes
@@ -1170,8 +1109,6 @@ like = () => {
   this.setState({ foto: fotoAtualizada });
 };
 ```
-
----
 
 5-10
 
@@ -1197,20 +1134,14 @@ like = () => {
 };
 ```
 
----
-
 Excercícios 5.4
 
 Resposta 8 opcional
 O código funciona porque no JavaScript `true && expression` sempre resulta na expression, e `false && expression` sempre resulta em `false`, portanto, se a condição for verdadeira, o elemento depois de `&&` será retornado, e se for falsa, o React simplesmente a ignora.
 
----
+## CAPÍTULO 6 - ADICIONANDO NOVOS COMENTÁRIOS A UMA FOTO
 
-# CAPÍTULO 6 - ADICIONANDO NOVOS COMENTÁRIOS A UMA FOTO
-
-## 6.1 EXIBINDO OS COMENTÁRIOS
-
----
+### 6.1 EXIBINDO OS COMENTÁRIOS
 
 6-1
 
@@ -1248,8 +1179,6 @@ render() {
     );
 }
 ```
-
----
 
 6-2
 
